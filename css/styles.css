@@ -1,0 +1,558 @@
+/* ====================================================================
+Project:  Modal Window
+Author:  Lone Mortensen
+Description:  TBD
+
+Built with: JavaScript, HTML5, CSS3, and Flexbox.
+
+===== *** =====
+
+==================================================================== */
+
+/* !!! START HERE - modify all CSS document...*/
+
+
+
+/* -------------------- Global Styles -------------------- */
+
+/* Fonts:
+Headings: 'Alata', sans-serif;
+Subheadings: 'Alata', sans-serif;
+Paragraph text, regular 400: 'Nunito Sans', sans-serif;
+Paragraph text, bold 700: 'Nunito Sans', sans-serif;
+*/
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #ffffff;
+    color: #313131;
+  }
+
+  ul {
+    margin: 0;
+    list-style-type: none;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  
+  h1 {
+    font-family: 'Alata', sans-serif;
+    font-size: 2.85rem;
+  }
+  
+  h2 {
+    font-family: 'Alata', sans-serif;
+    font-size: 2rem;
+  }
+  
+  h4 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  figure {
+    margin: 0;
+  }
+  
+  /* Layout - Structural Styles */
+   
+  #portfolio, #gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+  }
+  
+  .content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 80%;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    width: 100%;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  /* Layout - Special Styles */
+  
+  /*DELETE project-line css???*/
+  .project-line {
+    width: 100%;
+    height: 1px;
+    margin: 20px 0px 20px 0px;
+    background: #313131;
+    border: none;
+  }
+  
+  /* -------------------- Base Header-Footer Styles -------------------- */
+  
+  /* HEADER */
+  /* FOOTER */
+  
+  /* -------------------- Mobile Styles - Homepage -------------------- */
+  
+  /* MODAL WINDOW - MOBILE */
+
+  /*
+  Need styling for:
+  backdropblur
+  modal window outline + background
+  modal wrapper
+  modal image
+  modal title
+  modal description
+  modal links
+  modal nav buttons (arrow)
+  modal close button  
+  */
+
+
+  /* Styling applied in JavaScript: */
+
+  .backdrop-blur {
+    position: fixed; /*Keeps backdrop in place*/
+    z-index: 1; /*Situates backdrop on top*/
+    left: 0;
+    right: 0;
+    width: 100%; /*Change to viewport width: 100vw? See website mobile nav code*/
+    height: 100%; /*Change to viewport height: 100vh? See website mobile nav code*/
+    overflow: auto; /*Enables scroll*/
+    background-color: rgba(83, 86, 91, 0.9); /*rgba sets opacity without inheritance*/
+  }
+
+  .modal-window {
+    /* understand how to do this using flexbox. 
+    Q: do I need a modal-container in html to wrap and position the modalWindow?*/
+    position: fixed; /*Positions modal relative to viewport.*/
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* UNDERSTAND what this property does! */ 
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    z-index: 2;
+    width: 400px;
+  }
+
+  .modal-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(241, 148, 148, 1); /*rgba sets opacity without inheritance*/
+  }
+
+  .modal-image {
+    margin: 10px;
+    width: 30%;
+    border: 1px solid red;
+  }
+
+  .modal-content {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column wrap;
+    width: 50%;
+    margin: 10px;
+    border: 1px solid green;
+  }
+
+  .modal-title {
+    padding-left: 5px; 
+    font-size: 1.5rem;
+  }
+
+  .modal-description {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    padding-left: 5px; 
+    padding-right: 2px;
+    padding-top: 5px;
+  }
+
+  .modal-description-text {
+    /* DELETE from both css and js if not needed. */
+  }
+
+  .modal-links {
+    margin: 5px;
+  }
+
+  .modalLink-1 {
+    /* DELETE from both css and js if not needed. */
+  }
+
+  .modalLink-2 { 
+    /* DELETE from both css and js if not needed. */
+  }
+
+  .modalNavigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 0;
+  }
+
+  .arrowButtons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 50%;
+    margin: 0;
+  }
+
+  .arrowPrevious {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 20%;
+  }
+
+  .arrowNext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    width: 20%;
+  }
+
+  .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    margin: 0px 10px 0px 10px;
+    /*padding: 0px 5px 0px 5px;*/ 
+    background: #E9B14C;
+  }
+
+  /*
+  Create arrows with css:
+	https://www.tutorialspoint.com/css/css_arrows.htm#:~:text=Arrows%20can%20be%20created%20using,direction%20and%20amount%20of%20rotation.
+  */
+
+  .arrow {
+    /*border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;*/
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    background-color: transparent;
+
+  }    
+    
+
+  .previousModal {
+    /*border-left: 3px solid black;*/
+    transform: rotate(135deg);
+  }
+
+
+  .nextModal {
+    /*border-right: 3px solid black;*/
+    transform: rotate(-45deg);
+  }
+
+  .closeButton {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: row wrap;
+    width: 30%;
+    margin: 0;
+  }
+
+
+
+  /* PORTFOLIO - MOBILE */
+  
+  #portfolio {
+    padding: 60px 0px 60px 0px;
+  }
+  
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 30px 0px;
+  }
+  
+  .main-title {
+    text-align: center;
+  }
+  
+  .title-line {
+    width: 100%;
+    height: 1px;
+    margin: 20px 170px 20px 170px;
+    background: #313131;
+    border: none;
+  }
+  
+  .subtitle {
+    text-align: center;
+  }
+  
+  
+  /* START: [xxx] styling applied 
+  to [xxx] in JavaScript: */
+  /* END */
+  
+  /* START: [xxx] styling applied in JavaScript: */
+  /* END */
+  
+  .portfolio-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; 
+    flex-flow: row wrap;
+    width: 100%;
+  }
+  
+  .project {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .project figure {
+    width: 100%;
+    margin: 20px 0px 20px 0px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 4px 14px;
+  }
+  
+  .project-color-green {
+    padding: 60px 0px;
+    background-color: #E8F0E4;
+  }
+  
+  .project-color-purple {
+    padding: 60px 0px;
+    background-color: #351D77;
+  }
+  
+  .project-color-grey {
+    padding: 60px 0px;
+    background-color: #453E4F;
+  }
+  
+  .project-font-purple {
+    color: #351D77;
+  }
+  
+  .project-font-lilac {
+    color: #EEE4F0;
+  }
+  
+  .project-font-green {
+    color: #E8F0E4;
+  }
+  
+  .project-title {
+    text-align: center;
+    font-size: 5rem;
+  }
+
+  /* GALLERY - MOBILE */
+
+  /* NOTE: Add title and subtitle gallery styling to this section too...*/
+  
+  .gallery-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; 
+    flex-flow: row wrap;
+    width: 100%;
+  }
+
+  .gallery {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .gallery figure {
+    width: 100%;
+    margin: 20px 0px 20px 0px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 4px 14px;
+  }
+
+  .gallery-color-blue {
+    padding: 60px 0px;
+    background-color: #B4C7D9;
+  }
+  
+  .gallery-color-navy {
+    padding: 60px 0px;
+    background-color: #152A3E;
+  }
+  
+  .gallery-color-yellow {
+    padding: 60px 0px;
+    background-color: #E9B14C;
+  }
+  
+  .gallery-font-green {
+    color: #CAC691;
+  }
+  
+  .gallery-font-navy {
+    color: #152A3E;
+  }
+  
+  .gallery-font-pink {
+    color: #F7E8E8;
+  }
+  
+  .project-title {
+    text-align: center;
+    font-size: 5rem;
+  }
+  
+  
+  /* -------------------------- Tablet Styles ------------------------- */
+  
+  @media only screen and (min-width: 768px) {
+    
+    /* Global and Structural Styles - Tablet */
+  
+    h1 {
+      font-size: 3rem;
+    }
+  
+    h2 {
+      font-size: 2.25rem;
+    }
+  
+    h4 {
+      font-size: 1.85rem;
+    }
+  
+    /* ------------- Tablet - Base Header-Footer Styles ------------- *
+    
+    /* HEADER - Tablet */
+    /* FOOTER - Tablet */
+  
+    /* ---------------- Tablet Styles - Homepage ---------------- */
+    
+    /* PROJECTS - Tablet */
+  
+    .title-line {
+      margin: 20px 250px 20px 250px;
+    }
+  
+    .title {
+      margin: 50px 0px;
+    }
+  
+    .buttons-position {
+      margin: 10px 0px 60px 0px;
+    }
+  
+    .project-item {
+      width: 45%;
+    }
+  }
+  
+  /* -------------------------- Desktop Styles ------------------------- */
+  
+  @media only screen and (min-width: 1200px) {
+  
+    /* Global and Structural Styles - Desktop */
+  
+    h1 {
+      font-size: 4.5rem;
+    }
+  
+    h2 {
+      font-size: 3.25rem;
+    }
+  
+    h4 {
+      font-size: 2.25rem;
+    }
+  
+    /* ------------- Desktop - Base Header-Footer Styles ------------- *
+    
+    /* HEADER - Tablet */
+    /* FOOTER - Tablet */
+  
+    /* ------------------ Desktop Styles - Homepage ------------------ */
+    
+    /* PROJECTS - DESKTOP */
+  
+    #projects {
+      padding: 80px 0px 100px 0px;
+    }
+      
+    .content-wrapper {
+      max-width: 1200px;
+    }
+  
+    .title {
+      margin: 60px 0px;
+    }
+  
+    .title-line {
+      margin: 30px 385px 30px 385px;
+    }
+    
+    .buttons-position {
+      margin: 10px 0px 70px 0px;
+    }
+  
+    .buttons-align {
+      width: 50%;
+    }
+  
+    /* START: Language filter buttons styling applied 
+    to the button element in JavaScript: */
+    .buttons-style {
+      font-size: 1rem;
+    }
+    /* END */
+  
+    .project-item {
+      width: 30%;
+    }
+      
+    .project-item figure {
+      margin: 30px 0px 30px 0px;
+    }
+  }    

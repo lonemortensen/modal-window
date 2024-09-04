@@ -1,0 +1,153 @@
+<!-- ====================================================================
+Project: Modal Window
+Author:  Lone Mortensen
+Description:  TBD
+
+Built with: JavaScript, HTML5, CSS3, and Flexbox.
+
+===== *** =====
+
+==================================================================== -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Window</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Alata&family=Nunito+Sans:opsz@6..12&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Alata&family=Nunito+Sans:opsz,wght@6..12,400;6..12,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <!--PORTFOLIO-->
+        <section id="portfolio">
+            <div class="content-wrapper">
+                <div class="title">
+                    <h1 class="main-title">Modal Window</h1>
+                    <hr class="title-line"/>
+                    <h2 class="subtitle">My Portfolio Projects</h2>
+                </div>
+                <!--portfolio projects-->
+                <div class="portfolio-wrapper">
+                    <article id="project-1" class="project">
+                        <figure>
+                            <div class="project-color-green">
+                                <h2 class="project-title project-font-purple">&#35;1</h2>
+                            </div>
+                        </figure>
+                    </article>
+                    <article id="project-2" class="project">
+                        <figure>
+                          <div class="project-color-purple">
+                            <h2 class="project-title project-font-lilac">&#35;2</h2>
+                          </div>
+                        </figure>
+                    </article>
+                    <article id="project-3" class="project">
+                        <figure>
+                          <div class="project-color-grey">
+                            <h2 class="project-title project-font-green">&#35;3</h2>
+                          </div>
+                        </figure>
+                    </article>
+                    <!--TEST - Delete this <article> after use:-->
+                    <article id="gallery-1" class="gallery">
+                        <figure>
+                          <div class="project-color-purple">
+                            <h2 class="project-title project-font-lilac">&#35;1G</h2>
+                          </div>
+                        </figure>
+                    </article>                                             
+                </div>
+            </div>                
+        </section>
+
+        <!--GALLERY-->
+        <section id="gallery">
+            <div class="content-wrapper">
+                <div class="title">
+                    <!--<h1 class="main-title">Modal Window</h1>-->
+                    <hr class="title-line"/>
+                    <h2 class="subtitle">My Gallery Items</h2>
+                </div>
+                <!--gallery items-->
+                <div class="gallery-wrapper">
+                    <article id="gallery-1" class="gallery">
+                        <figure>
+                            <div class="gallery-color-blue">
+                                <h2 class="project-title gallery-font-navy">&#35;1</h2>
+                            </div>
+                        </figure>
+                    </article>
+                    <article id="gallery-2" class="gallery">
+                        <figure>
+                          <div class="gallery-color-navy">
+                            <h2 class="project-title gallery-font-green">&#35;2</h2>
+                          </div>
+                        </figure>
+                    </article>
+                    <article id="gallery-3" class="gallery">
+                        <figure>
+                          <div class="gallery-color-yellow">
+                            <h2 class="project-title gallery-font-pink">&#35;3</h2>
+                          </div>
+                        </figure>
+                    </article>
+                </div>
+            </div>                
+        </section>
+    </main>
+
+    
+    <!--JavaScript-->
+    <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
+
+
+
+
+<!--DELETE - Modal window html markup DRAFT for use in modal.js:-->
+<!--
+<div class="modalWindow">
+    <div class="modalWrapper">
+        <figure class="modalImage">
+            <img>
+        </figure>
+        <div class="modalContent">
+            <h2 class="modalTitle"></h2>
+            <div class="modalDescription">
+                <p></p>
+            </div>
+            <div class="modalLinks">
+                <div class="modalLink-1">
+                    <a></a>
+                </div>
+                <div class="modalLink-2">
+                    <a></a>
+                </div>
+            </div>
+        </div>
+        <div class="modalNavigation">
+            <ul class="arrowButtons">
+                <li class="arrowPrevious">
+                    <button class="previousModal"></button>
+                </li>
+                <li class="arrowNext">
+                    <button class="nextModal"></button>
+                </li>    
+            </ul>
+            <div class="closeButton">
+                <button class="closeModal"></button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+-->
