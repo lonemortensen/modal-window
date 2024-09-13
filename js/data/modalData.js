@@ -9,17 +9,11 @@ Built with: JavaScript, HTML5, CSS3, and Flexbox.
 
 ==================================================================== */
 
-// !!! START HERE: when the arrays are combined into one array in the accessData function, the two modal components function as ONE
-// so when the portfolio component runs out of projects when clicking next and previous, it continues
-// with the gallery items. Figure out how to make the two components need to function separately! 
-// Do I create a 2D array? If so, how do I loop through ALL elements, but identify which array the selected element 
-// belongs to so the circular array will stick to the array that contains that element?
-// https://www.freecodecamp.org/news/javascript-2d-arrays/    
-// Or consider simply creating a new data module for each modal...
-
 /**
- * Arrays store objects containing data for each of the Modals. 
+ * Arrays (one-dimensional) store objects containing data for each of the Modals. 
  * The data is for use in the Modal windows.
+ * If multiple Modal window components are used on the webpage, each component's data is 
+ * stored in a separate array.
 */
 const portfolioProjects = [ 
     { 
@@ -88,12 +82,13 @@ the modalData.js module and imported into the modal.js module from where it is c
 
 /**
  * Accesses and exports the data for the Modals. 
- * Combines multiple Modal data arrays into one data array.
- * @return — The data for the Modals.
+ * Combines multiple one-dimensional (1D) Modal data arrays into a two-dimensional (2D) data array.
+ * @return — A 2D array containing data for the Modals.
 */
 export const accessData = () => {
-	// Combines multiple arrays into one:
-    let data = [].concat(portfolioProjects, galleryItems); // 
-    //console.log(data); // Works. Logs all objects in one array.
+	// Combines multiple 1D arrays into one 2D array:
+    let data = [];
+    data.push(portfolioProjects, galleryItems);
+    console.log(data); // Works. Logs one 2D array with two inner 1D arrays, each with three objects.
     return data;
 };

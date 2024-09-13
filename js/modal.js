@@ -46,17 +46,30 @@ the modalData.js module and subsequently imported into the modal.js module from 
 const getModalData = (type, selectedModalId) => {
 	// Calls function to access data and assigns returned data to new variable:
 	let modalData = accessData(); // To hold onto the returned result, assign the function to a variable.
-	console.log(modalData); // Works. Logs all objects in ONE array.
+	console.log(modalData); // Works. Logs one 2D array with two inner 1D arrays, each with three objects.
 	console.log(type); // Works. Logs type correctly.
-	console.log(selectedModalId); // Works.
+	console.log(selectedModalId); // Works. 
 
 	// Stores data for the selected Modal's window:
 	let modalWindowData = {};
 	console.log(modalWindowData);
 
+	// Interates over outer array (2D) to get the index of the first inner array (1D) that contains the data for the selected Modal.
+	// Callback function uses the some() method to check whether there is a modal id value in the inner array that matches that of selectedModalId:
+	// @return - True or false.
+	const findModalArrayIndex = (innerArray) => {
+    	return innerArray.some(modal => modal.id === selectedModalId);
+	};
+	// The findIndex() method iterates over the outer array and calls the findModalArrayIndex() callback function on each inner array: 
+	// @return - The index of the first inner array that meets the callback condition. 
+	const foundArrayIndex = modalData.findIndex(findModalArrayIndex);
+	console.log(foundArrayIndex); // Works. Logs the index of the inner array that contains the object with an id that matches the value of selectedModalId.
+	let modalArrayIndex = modalData[foundArrayIndex];
+	console.log(modalArrayIndex); // Works. Logs the inner array, incl. objects, with the index contained in foundArrayIndex.
+
 	// Gets and stores the index of the Modal based on the Modal's id:
 	// - note: Gets the currently open Modal's index when user selects 'previous' or 'next' modal.
-	let modalWindowIndex = modalData.findIndex(modal => modal.id == selectedModalId);
+	let modalWindowIndex = modalArrayIndex.findIndex(modal => modal.id === selectedModalId);
 	console.log(modalWindowIndex); // Works. Logs the index of the 'new' OR currently open Modal. 
 	
 	// Adds data for the selected Modal ('new', 'previous', or 'next') to the modalWindowData object:
@@ -71,7 +84,7 @@ const getModalData = (type, selectedModalId) => {
 	if (type == 'new') { 
 		// Q: Do I need a loop that will stop (break out) when it gets the requested modal's id - vs. going through them all?
 		// Loops through each object in the Modal data array: 
-		for (let modal of modalData) {
+		for (let modal of modalArrayIndex) {
 			//console.log(modal); // Works. Logs key-values of each object in the Modal data array.
 			// Loops through the keys of the object to check if the id key matches the id of the Modal:
 			for (let key in modal) {
@@ -92,7 +105,7 @@ const getModalData = (type, selectedModalId) => {
 	if (type == 'previous') {
 		// Gets the data for the 'previous' Modal window based on the index of the currently open Modal:
 		// @param currentModal - The index of the currently open Modal (modalWindowIndex).
-		// @param modalArray - The modal data array (modalData).
+		// @param modalArray - The index of the inner modal data array that contains the selected Modal (modalArrayIndex). 
 		// @return - The data for the Modal that comes before the current Modal.
 		// Note: the function accesses the array in a circular manner, accessing the last modal if the current modal is the first one.
 		const getPreviousModal = (currentModal, modalArray) => {
@@ -101,7 +114,7 @@ const getModalData = (type, selectedModalId) => {
 			return modalArray[(i % n + n) % n];
 		};
 
-		let previousModal = getPreviousModal(modalWindowIndex, modalData);
+		let previousModal = getPreviousModal(modalWindowIndex, modalArrayIndex);
 		console.log(previousModal); // Works. Logs modal in index 2 ("project-3").
 
 		// Calls function to add data for the 'previous' Modal to modalWindowData object:
@@ -112,7 +125,7 @@ const getModalData = (type, selectedModalId) => {
 	if (type == 'next') {
 		// Gets the data for the 'next' Modal based on the index of the currently open Modal:
 		// @param currentModal - The index of the currently open Modal (modalWindowIndex).
-		// @param modalArray - The modal data array (modalData).
+		// @param modalArray - The index of the inner modal data array that contains the selected Modal (modalArrayIndex). 
 		// @return - The data for the Modal that comes after the current Modal.
 		// - note: the function accesses the array in a circular manner, accessing the first modal if the current modal is the last one.
 		const getNextModal = (currentModal, modalArray) => {
@@ -121,7 +134,7 @@ const getModalData = (type, selectedModalId) => {
 			return modalArray[(i % n + n) % n];
 		};
 
-		let nextModal = getNextModal(modalWindowIndex, modalData);
+		let nextModal = getNextModal(modalWindowIndex, modalArrayIndex);
 		console.log(nextModal); // Works. Logs modal in index 0 ("project-1").
 
 		// Calls function to add data for the 'next' Modal to modalWindowData object:
