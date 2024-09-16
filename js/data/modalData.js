@@ -39,6 +39,30 @@ const portfolioProjects = [
         description: "Project #3 - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
         secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
+    }, 
+    { 
+        id: "project-4", 
+	    image: "img/modal-window-project-1-1200.png",
+	    title: "Project #4",
+	    description: "Project #4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        firstLink: "https://lonemortensen.com/",
+	    secondLink: "https://github.com/lonemortensen/portfolio-filter" 
+    },
+	{ 
+        id: "project-5", 
+	    image: "img/modal-window-project-2-1200.png",
+	    title: "Project #5",
+        description: "Project #5 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        firstLink: "https://lonemortensen.github.io/portfolio-filter/",
+        secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
+    },
+	{ 
+        id: "project-6", 
+        image: "img/modal-window-project-3-1200.png",
+        title: "Project #6",
+        description: "Project #6 - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
+        firstLink: "https://lonemortensen.github.io/portfolio-filter/",
+        secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     } 
 ];
 
@@ -64,6 +88,30 @@ const galleryItems = [
 	    image: "img/modal-window-project-1-1200.png",
 	    title: "Gallery #3",
 	    description: "Gallery #3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        firstLink: "https://lonemortensen.github.io/portfolio-filter/",
+	    secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
+    },
+    { 
+        id: "gallery-4", 
+	    image: "img/modal-window-project-1-1200.png",
+	    title: "Gallery #4",
+	    description: "Gallery #4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        firstLink: "https://lonemortensen.github.io/portfolio-filter/",
+	    secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
+    },
+    { 
+        id: "gallery-5", 
+	    image: "img/modal-window-project-1-1200.png",
+	    title: "Gallery #5",
+	    description: "Gallery #5 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        firstLink: "https://lonemortensen.github.io/portfolio-filter/",
+	    secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
+    },
+    { 
+        id: "gallery-6", 
+	    image: "img/modal-window-project-1-1200.png",
+	    title: "Gallery #6",
+	    description: "Gallery #6 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
 	    secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     }

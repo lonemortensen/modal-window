@@ -86,6 +86,14 @@ html {
     flex-flow: row wrap;
     width: 80%;
   }
+
+  .content-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* background-color: #000401; */
+  }
   
   h1,
   h2,
@@ -109,7 +117,8 @@ html {
     background: #313131;
     border: none;
   }
-  
+
+   
   /* -------------------- Base Header-Footer Styles -------------------- */
   
   /* HEADER */
@@ -302,6 +311,9 @@ html {
     padding: 60px 0px 60px 0px;
   }
   
+  /* CONSIDER moving styling related to titles to Layout Special Styles or similar as 
+  styling is shared with Gallery items:*/
+
   .title {
     display: flex;
     justify-content: center;
@@ -334,13 +346,22 @@ html {
   
   /* START: [xxx] styling applied in JavaScript: */
   /* END */
+
+  /*CONSIDER grouping some of this styling for Projects and Gallery as 
+  many are the same:*/
   
+  .content-background {
+    background-color: #453E4F;
+  }  
+
   .portfolio-wrapper {
     display: flex;
     justify-content: space-around;
     align-items: flex-start; 
     flex-flow: row wrap;
     width: 100%;
+    margin: 50px 0px;
+    padding: 0px 20px;
   }
   
   .project {
@@ -353,10 +374,15 @@ html {
   .project figure {
     width: 100%;
     margin: 20px 0px 20px 0px;
-    box-shadow: rgb(0 0 0 / 25%) 0px 4px 14px;
+    /* padding: 60px 0px; */
+    /* box-shadow: rgb(0 0 0 / 25%) 0px 4px 14px; */
+    /* border: 1px solid; */
+    border-radius: 12px;
+    background-color: #e1dbc7;
   }
   
-  .project-color-green {
+  /* NOTE: Old color scheme. Likely DELETE: */
+  /* .project-color-green {
     padding: 60px 0px;
     background-color: #E8F0E4;
   }
@@ -381,23 +407,69 @@ html {
   
   .project-font-green {
     color: #E8F0E4;
-  }
+  } */
   
   .project-title {
+    padding: 40px 0px 0px 0px;
     text-align: center;
-    font-size: 5rem;
+    /* font-size: 5rem; */
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+
+  .project-title span {
+    /* color: #a3d5e6; */
+    /* color: #05b8ee; */
+    color: #ffffff;
+    font-size: 3rem;
+  }
+
+  .view-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px 40px 20px 0px;
+
+  }
+
+  .button-style {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    border: none;
+    background-color: #05b8ee;
+    color: #e1dbc7;
+    transform: scale(0.9);
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .button-style:hover {
+    transform: scale(1);
+    transition: 0.3s ease-in-out transform;
+    /* background-color: #139efa; */
   }
 
   /* GALLERY - MOBILE */
 
   /* NOTE: Add title and subtitle gallery styling to this section too...*/
   
+  #gallery {
+    padding: 60px 0px 60px 0px;
+  }
+
+  .content-background {
+    background-color: #453E4F;
+  }  
+
   .gallery-wrapper {
     display: flex;
     justify-content: space-around;
     align-items: flex-start; 
     flex-flow: row wrap;
     width: 100%;
+    margin: 50px 0px;
+    padding: 0px 20px;
   }
 
   .gallery {
@@ -410,10 +482,13 @@ html {
   .gallery figure {
     width: 100%;
     margin: 20px 0px 20px 0px;
-    box-shadow: rgb(0 0 0 / 25%) 0px 4px 14px;
+    /* box-shadow: rgb(0 0 0 / 25%) 0px 4px 14px; */
+    border-radius: 12px;
+    background-color: #e1dbc7;
   }
 
-  .gallery-color-blue {
+  /* NOTE: Old color scheme. Likely DELETE: */
+  /* .gallery-color-blue {
     padding: 60px 0px;
     background-color: #B4C7D9;
   }
@@ -439,12 +514,16 @@ html {
   .gallery-font-pink {
     color: #F7E8E8;
   }
-  
-  .project-title {
+  */
+
+  .gallery-title {
+    padding: 40px 0px 0px 0px;
     text-align: center;
-    font-size: 5rem;
+    /* font-size: 5rem; */
+    font-size: 2rem;
+    text-transform: uppercase;
   }
-  
+ 
   
   /* -------------------------- Tablet Styles ------------------------- */
   
@@ -485,7 +564,13 @@ html {
       margin: 10px 0px 60px 0px;
     }
   
-    .project-item {
+    .project {
+      width: 45%;
+    }
+
+    /* GALLERY - Tablet */
+
+    .gallery {
       width: 45%;
     }
   }
@@ -548,11 +633,17 @@ html {
     }
     /* END */
   
-    .project-item {
+    .project {
       width: 30%;
     }
       
-    .project-item figure {
+    .project figure {
       margin: 30px 0px 30px 0px;
+    }
+
+    /* GALLERY - Tablet */
+
+    .gallery {
+      width: 30%;
     }
   }    

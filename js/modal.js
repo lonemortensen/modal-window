@@ -50,7 +50,7 @@ const getModalData = (type, selectedModalId) => {
 	console.log(type); // Works. Logs type correctly.
 	console.log(selectedModalId); // Works. 
 
-	// Stores data for the selected Modal's window:
+	// Stores the object data for the selected Modal's window:
 	let modalWindowData = {};
 	console.log(modalWindowData);
 
@@ -61,7 +61,7 @@ const getModalData = (type, selectedModalId) => {
     	return innerArray.some(modal => modal.id === selectedModalId);
 	};
 	// The findIndex() method iterates over the outer array and calls the findModalArrayIndex() callback function on each inner array: 
-	// @return - The index of the first inner array that meets the callback condition. 
+	// Finds the index of the first inner array that meets the callback condition. 
 	const foundArrayIndex = modalData.findIndex(findModalArrayIndex);
 	console.log(foundArrayIndex); // Works. Logs the index of the inner array that contains the object with an id that matches the value of selectedModalId.
 	let modalArrayIndex = modalData[foundArrayIndex];
@@ -149,6 +149,11 @@ const getModalData = (type, selectedModalId) => {
 /* ===== VIEW ===== */
 
 /**
+ * NOTE: Do not remove eventlistener on Modal HTML elements as this prevents user from clicking (and opening) 
+ * the same modal more than once unless the page reloads (and the event listener is added again)! 
+*/
+
+/**
  * Adds event listeners to Modal html elements.
  * Calls event handler to prepare a Modal. 
  * @param modalELements - Contains Modal html elements. 
@@ -191,7 +196,7 @@ const createModalWindow = (selectedModalData) => {
 	modalBackdrop = document.createElement("div");
 	modalBackdrop.classList.add("backdrop-blur");
 	bodyElement.insertBefore(modalBackdrop, mainElement); // Works! 
-	modalBackdrop.addEventListener("click", closeModalWindow); 
+	modalBackdrop.addEventListener("click", closeModalWindow, {once: true}); 
 
 	/* Modal window:*/
 	modalWindow = document.createElement("div");
@@ -278,7 +283,7 @@ const createModalWindow = (selectedModalData) => {
 	// Adds event listener to 'previous' button and passes the id of the currently open Modal:
 	// https://plainenglish.io/blog/passing-arguments-to-event-listeners-in-javascript-1a81bc397ecb
 	previousModal.addEventListener("click", (event) => {
-		prepareModalWindow(event, currentModalId);
+		prepareModalWindow(event, currentModalId, {once: true});
 	}); 
 	
 	const nextModal = arrowNext.appendChild(document.createElement("button"));
@@ -288,7 +293,7 @@ const createModalWindow = (selectedModalData) => {
 	nextModal.classList.add("arrow", "nextModal");
 	// Adds event listener to 'next' button and passes the id of the currently open Modal:
 	nextModal.addEventListener("click", (event) => {
-		prepareModalWindow(event, currentModalId);
+		prepareModalWindow(event, currentModalId, {once: true});
 	}); 
 	
 	/* - close button:*/
@@ -297,7 +302,7 @@ const createModalWindow = (selectedModalData) => {
 	const closeModal = closeButton.appendChild(document.createElement("button"));
 	closeModal.setAttribute("type", "button");
 	closeModal.innerText = "Close Modal";
-	closeModal.addEventListener("click", closeModalWindow); 
+	closeModal.addEventListener("click", closeModalWindow, {once: true}); 
 
 	modalWrapper.appendChild(modalNavigation);
 
@@ -310,10 +315,9 @@ const createModalWindow = (selectedModalData) => {
 		} else if (event.key == "Escape") {
 			closeModalWindow(); // Works. Closes modal window. 
 		}
-		bodyElement.removeEventListener("keyup", checkNavigationKey); 
 	};
 	// Adds event listener to 'body' element:
-	bodyElement.addEventListener("keyup", checkNavigationKey); 
+	bodyElement.addEventListener("keyup", checkNavigationKey, {once: true}); 
 };
 
 

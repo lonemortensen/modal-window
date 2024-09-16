@@ -20,6 +20,11 @@ Built with: JavaScript, HTML5, CSS3, and Flexbox.
 import {addModalEventListener, closeModalWindow} from "./modal.js"; 
 
 
+/**
+ * NOTE: Do not remove eventlistener on Window as this prevents user from clicking (and opening) 
+ * the same modal more than once unless the page reloads (and the event listener is added again)! 
+*/
+
 /** 
  * Detects when page loads.
  * Adds event listener to the Window.
