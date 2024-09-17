@@ -45,7 +45,7 @@ const modal = (function() {
      * Calls event handler to add an event listener to each Modal html element.
      * @arg modalElements - Contains Modal html elements. 
     */
-    const modalElements = document.querySelectorAll('.project, .gallery'); // Works. Selects both project and gallery elements.
+    const modalElements = document.querySelectorAll('.view-project, .view-gallery'); // Works. Selects both project and gallery button elements.
     //console.log(modalElements);
     addModalEventListener(modalElements); 
 

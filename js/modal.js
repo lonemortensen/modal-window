@@ -216,6 +216,7 @@ const createModalWindow = (selectedModalData) => {
 	const modalImage = document.createElement("figure");
 	modalImage.classList.add("modal-image");
 	const image = modalImage.appendChild(document.createElement("img"));
+	image.src = selectedModalData['image'];
 	modalWrapper.appendChild(modalImage);
 
 	/* Modal content:*/
@@ -356,6 +357,7 @@ const prepareModalWindow = (event, modalId) => {
 	// Gets and stores the type of Modal selected ('new', 'previous', or 'next'):
 	let modalType = event.currentTarget.dataset.navigation;
 	//console.log(modalType);
+	//console.log(event);
 
 	// Gets the id of the selected Modal:
 	let selectedModalId = event.currentTarget.id;

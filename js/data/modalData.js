@@ -17,50 +17,50 @@ Built with: JavaScript, HTML5, CSS3, and Flexbox.
 */
 const portfolioProjects = [ 
     { 
-        id: "project-1", 
-	    image: "img/modal-window-project-1-1200.png",
-	    title: "Project #1",
-	    description: "Project #1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        id: "project-1-modal", 
+	    image: "./img/modal-portfolio-image-1200.png",
+        title: "Portfolio Project | ONE",
+	    description: "Project 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
         firstLink: "https://lonemortensen.com/",
 	    secondLink: "https://github.com/lonemortensen/portfolio-filter" 
     },
 	{ 
-        id: "project-2", 
-	    image: "img/modal-window-project-2-1200.png",
-	    title: "Project #2",
-        description: "Project #2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        id: "project-2-modal", 
+	    image: "./img/modal-portfolio-image-1200.png",
+	    title: "Portfolio Project | TWO",
+        description: "Project 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
         secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     },
 	{ 
-        id: "project-3", 
-        image: "img/modal-window-project-3-1200.png",
-        title: "Project #3",
-        description: "Project #3 - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
+        id: "project-3-modal", 
+        image: "./img/modal-portfolio-image-1200.png",
+        title: "Portfolio Project | THREE",
+        description: "Project 3 - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
         secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     }, 
     { 
-        id: "project-4", 
-	    image: "img/modal-window-project-1-1200.png",
-	    title: "Project #4",
-	    description: "Project #4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        id: "project-4-modal", 
+	    image: "./img/modal-portfolio-image-1200.png",
+	    title: "Portfolio Project | FOUR",
+	    description: "Project 4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         firstLink: "https://lonemortensen.com/",
 	    secondLink: "https://github.com/lonemortensen/portfolio-filter" 
     },
 	{ 
-        id: "project-5", 
-	    image: "img/modal-window-project-2-1200.png",
-	    title: "Project #5",
-        description: "Project #5 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+        id: "project-5-modal", 
+	    image: "./img/modal-portfolio-image-1200.png",
+	    title: "Portfolio Project | FIVE",
+        description: "Project 5 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
         secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     },
 	{ 
-        id: "project-6", 
-        image: "img/modal-window-project-3-1200.png",
-        title: "Project #6",
-        description: "Project #6 - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex.",
+        id: "project-6-modal", 
+        image: "./img/modal-portfolio-image-1200.png",
+        title: "Portfolio Project | SIX",
+        description: "Project 6 - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Nostrud exercitation ullamco.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
         secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     } 
@@ -68,50 +68,50 @@ const portfolioProjects = [
 
 const galleryItems = [ 
     { 
-        id: "gallery-1", 
-	    image: "img/modal-window-project-1-1200.png",
-	    title: "Gallery #1",
-	    description: "Gallery #1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        id: "gallery-1-modal", 
+	    image: "./img/modal-gallery-image-1200.png",
+	    title: "Gallery Item | ONE",
+	    description: "Gallery 1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
 	    secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     },
     { 
-        id: "gallery-2", 
-	    image: "img/modal-window-project-1-1200.png",
-	    title: "Gallery #2",
-	    description: "Gallery #2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        id: "gallery-2-modal", 
+	    image: "./img/modal-gallery-image-1200.png",
+	    title: "Gallery Item | TWO",
+	    description: "Gallery 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
 	    secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     },
     { 
-        id: "gallery-3", 
-	    image: "img/modal-window-project-1-1200.png",
-	    title: "Gallery #3",
-	    description: "Gallery #3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        id: "gallery-3-modal", 
+	    image: "./img/modal-gallery-image-1200.png",
+	    title: "Gallery Item | THREE",
+	    description: "Gallery 3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
 	    secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     },
     { 
-        id: "gallery-4", 
-	    image: "img/modal-window-project-1-1200.png",
-	    title: "Gallery #4",
-	    description: "Gallery #4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        id: "gallery-4-modal", 
+	    image: "./img/modal-gallery-image-1200.png",
+	    title: "Gallery Item | FOUR",
+	    description: "Gallery 4 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
 	    secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     },
     { 
-        id: "gallery-5", 
-	    image: "img/modal-window-project-1-1200.png",
-	    title: "Gallery #5",
-	    description: "Gallery #5 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        id: "gallery-5-modal", 
+	    image: "./img/modal-gallery-image-1200.png",
+	    title: "Gallery Item | FIVE",
+	    description: "Gallery 5 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
 	    secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     },
     { 
-        id: "gallery-6", 
-	    image: "img/modal-window-project-1-1200.png",
-	    title: "Gallery #6",
-	    description: "Gallery #6 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        id: "gallery-6-modal", 
+	    image: "./img/modal-gallery-image-1200.png",
+	    title: "Gallery Item | SIX",
+	    description: "Gallery 6 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do. Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
         firstLink: "https://lonemortensen.github.io/portfolio-filter/",
 	    secondLink: "https://lonemortensen.github.io/portfolio-filter/" 
     }
