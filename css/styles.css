@@ -161,7 +161,6 @@ html {
     /*background-color: rgba(227, 226, 223, 1);*/ /* rgba() sets opacity without inheritance. */
     background-color: rgb(225, 219, 199); /* rgba() sets opacity without inheritance. */
     /*background-color: rgba(241, 148, 148, 1);*/ /*rgba sets opacity without inheritance*/
-    
   }
 
   .modal-image {
@@ -223,12 +222,14 @@ html {
     align-items: center;
     flex-flow: row wrap;
     width: 100%;
-    margin: 0;
+    /* margin: 0; */
+    margin: 0px 10px 0px 10px;
   }
 
   .arrowButtons {
     display: flex;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
+    justify-content: flex-end;
     align-items: center;
     flex-flow: row wrap;
     width: 50%;
@@ -252,12 +253,13 @@ html {
   }
 
   .circle {
-    width: 20px;
-    height: 20px;
-    border-radius: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
     margin: 0px 10px 0px 10px;
     /*padding: 0px 5px 0px 5px;*/ 
-    background: #E9B14C;
+    /* background: #E9B14C; */
+    background-color: #ffffff;
   }
 
   /*
@@ -265,34 +267,77 @@ html {
 	https://www.tutorialspoint.com/css/css_arrows.htm#:~:text=Arrows%20can%20be%20created%20using,direction%20and%20amount%20of%20rotation.
   */
 
-  .arrow {
-    /*border-top: 3px solid transparent;
-    border-bottom: 3px solid transparent;*/
+  /* .arrow {
     border: solid black;
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 3px;
     background-color: transparent;
-  }    
+  }     */
 
-  .previousModal {
-    /*border-left: 3px solid black;*/
-    transform: rotate(135deg);
+  .previousModal { /*styling for button element*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    pointer-events: auto;
   }
 
-  .nextModal {
-    /*border-right: 3px solid black;*/
-    transform: rotate(-45deg);
+  .previousModal i { 
+    font-size: 1rem;
+  }
+
+  .nextModal { /*styling for button element*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .nextModal i { 
+    font-size: 1rem;
   }
 
   .closeButton {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    justify-content: flex-end;
     align-content: center;
     flex-flow: row wrap;
-    width: 30%;
+    /* width: 30%; */
+    width: 20%;
     margin: 0;
   }
+
+  .closeButton-style {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    border: none;
+    /* background-color: #05b8ee; */
+    background-color: #ffffff;
+    /* color: #e1dbc7; */
+    transform: scale(0.9);
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+ .closeButton-style:hover {
+    transform: scale(1);
+    transition: 0.3s ease-in-out transform;
+  }
+
 
   /* PORTFOLIO - MOBILE */
   

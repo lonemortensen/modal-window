@@ -279,8 +279,9 @@ const createModalWindow = (selectedModalData) => {
 	const previousModal = arrowPrevious.appendChild(document.createElement("button"));
 	previousModal.setAttribute("type", "button");
 	previousModal.setAttribute("data-navigation", "previous");
-	//previousModal.addEventListener("click", prepareModalWindow); //TEMP
-	previousModal.classList.add("arrow", "previousModal");
+	previousModal.classList.add("previousModal");
+	const arrowIconPrevious = previousModal.appendChild(document.createElement("i"));
+	arrowIconPrevious.classList.add("fa-solid", "fa-chevron-left");
 	// Adds event listener to 'previous' button and passes the id of the currently open Modal:
 	// https://plainenglish.io/blog/passing-arguments-to-event-listeners-in-javascript-1a81bc397ecb
 	previousModal.addEventListener("click", (event) => {
@@ -290,8 +291,9 @@ const createModalWindow = (selectedModalData) => {
 	const nextModal = arrowNext.appendChild(document.createElement("button"));
 	nextModal.setAttribute("type", "button");
 	nextModal.setAttribute("data-navigation", "next");
-	//nextModal.addEventListener("click", prepareModalWindow); //TEMP
-	nextModal.classList.add("arrow", "nextModal");
+	nextModal.classList.add("nextModal");
+	const arrowIconNext = nextModal.appendChild(document.createElement("i"));
+	arrowIconNext.classList.add("fa-solid", "fa-chevron-right");
 	// Adds event listener to 'next' button and passes the id of the currently open Modal:
 	nextModal.addEventListener("click", (event) => {
 		prepareModalWindow(event, currentModalId, {once: true});
@@ -302,7 +304,8 @@ const createModalWindow = (selectedModalData) => {
 	closeButton.classList.add("closeButton");
 	const closeModal = closeButton.appendChild(document.createElement("button"));
 	closeModal.setAttribute("type", "button");
-	closeModal.innerText = "Close Modal";
+	closeModal.innerText = "Close";
+	closeModal.classList.add("closeButton-style");
 	closeModal.addEventListener("click", closeModalWindow, {once: true}); 
 
 	modalWrapper.appendChild(modalNavigation);
