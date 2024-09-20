@@ -42,6 +42,8 @@ html {
   }
 
   a {
+    font-family: 'Alata', sans-serif;
+    color: #313131;
     text-decoration: none;
   }
   
@@ -123,7 +125,6 @@ html {
   /* -------------------- Mobile Styles - Homepage -------------------- */
   
   /* MODAL WINDOW - MOBILE */
-
   /* Styling applied in JavaScript: */
 
   .backdrop-blur {
@@ -206,23 +207,50 @@ html {
 
   .modal-links {
     margin: 5px;
+    padding-top: 10px;
+  }
+
+  .modal-links-styling {
+    cursor: pointer;
+    pointer-events: auto;
+    transition: color 700ms;
+  }
+
+  .modal-links-styling:hover {
+    color: #9c9c9c;
   }
 
   .modalLink-1 {
-    /* DELETE from both css and js if not needed. */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0px 5px 0px;
+  }
+
+  .modalLink-1 i {
+    margin-left: 10px;
   }
 
   .modalLink-2 { 
-    /* DELETE from both css and js if not needed. */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0px 5px 0px;
+  }
+
+  .modalLink-2 i {
+    margin-left: 10px;
   }
 
   .modalNavigation {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    justify-content: flex-end;
     align-items: center;
     flex-flow: row wrap;
     width: 100%;
-    /* margin: 0; */
     margin: 0px 10px 0px 10px;
   }
 
@@ -253,9 +281,9 @@ html {
   }
 
   .circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
     margin: 0px 10px 0px 10px;
     /*padding: 0px 5px 0px 5px;*/ 
     /* background: #E9B14C; */
@@ -278,10 +306,13 @@ html {
   .previousModal { /*styling for button element*/
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
+    /* align-items: center; */
+    /* align-content: center; */
+    align-content: center;
+    flex-flow: row wrap;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -289,16 +320,20 @@ html {
   }
 
   .previousModal i { 
-    font-size: 1rem;
+    /* font-size: 1rem; */
+    font-size: 0.9rem;
   }
 
   .nextModal { /*styling for button element*/
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 30px;
+    /* align-items: center; */
+    /* align-content: space-around; */
+    align-content: center;
+    flex-flow: row wrap;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -306,7 +341,8 @@ html {
   }
 
   .nextModal i { 
-    font-size: 1rem;
+    /* font-size: 1rem; */
+    font-size: 0.9rem;
   }
 
   .closeButton {
@@ -385,6 +421,7 @@ html {
   many are the same:*/
   
   #portfolio .content-background {
+    margin: 60px 0px 0px 0px;
     background-color: #453E4F;
   }  
 
@@ -462,6 +499,7 @@ html {
   }
 
  #gallery .content-background {
+    margin: 60px 0px 60px 0px;
     background-color: #355E3B;
   }  
 
