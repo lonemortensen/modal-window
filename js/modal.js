@@ -235,7 +235,6 @@ const createModalWindow = (selectedModalData) => {
 	const modalDescription = document.createElement("div");
 	modalDescription.classList.add("modal-description");
 	const descriptionText = modalDescription.appendChild(document.createElement("p"));
-	descriptionText.classList.add("modal-description-text");
 	descriptionText.innerText = selectedModalData['description'];
 	modalContent.appendChild(modalDescription);
 

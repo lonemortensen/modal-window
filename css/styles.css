@@ -90,7 +90,6 @@ html {
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* background-color: #000401; */
   }
   
   h1,
@@ -107,16 +106,32 @@ html {
   
   /* Layout - Special Styles */
   
-  /*DELETE project-line css???*/
-  .project-line {
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 30px 0px;
+  }
+  
+  .main-title {
+    text-align: center;
+  }
+  
+  .title-line {
     width: 100%;
     height: 1px;
-    margin: 20px 0px 20px 0px;
+    margin: 20px 170px 20px 170px;
     background: #313131;
     border: none;
   }
-
-   
+  
+  .subtitle {
+    text-align: center;
+  }
+  
+  
   /* -------------------- Base Header-Footer Styles -------------------- */
   
   /* HEADER */
@@ -124,7 +139,8 @@ html {
   
   /* -------------------- Mobile Styles - Homepage -------------------- */
   
-  /* MODAL WINDOW - MOBILE */
+  /* MODAL WINDOW - Mobile */
+  
   /* Styling applied in JavaScript: */
 
   .backdrop-blur {
@@ -132,24 +148,21 @@ html {
     z-index: 1; /*Situates backdrop on top*/
     left: 0;
     right: 0;
-    width: 100%; /*Change to viewport width: 100vw? See website mobile nav code*/
-    height: 100%; /*Change to viewport height: 100vh? See website mobile nav code*/
+    width: 100%; 
+    height: 100%; 
     overflow: auto; /*Enables scroll*/
     background-color: rgba(83, 86, 91, 0.9); /*rgba sets opacity without inheritance*/
   }
 
   .modal-window {
-    /* understand how to do this using flexbox. 
-    Q: do I need a modal-container in html to wrap and position the modalWindow?*/
-    position: fixed; /*Positions modal relative to viewport.*/
+    position: fixed; /*Positions modal relative to viewport*/
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%); /* UNDERSTAND what this property does! */ 
+    transform: translate(-50%, -50%); 
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
     z-index: 2;
-    /* width: 400px; */
     width: 75%;
   }
 
@@ -159,16 +172,12 @@ html {
     flex-flow: row wrap;
     width: 100%;
     padding: 20px;
-    /*background-color: rgba(227, 226, 223, 1);*/ /* rgba() sets opacity without inheritance. */
     background-color: rgb(225, 219, 199); /* rgba() sets opacity without inheritance. */
-    /*background-color: rgba(241, 148, 148, 1);*/ /*rgba sets opacity without inheritance*/
   }
 
   .modal-image {
     margin: 10px;
-    /* width: 30%; */
     width: 100%;
-    /* border: 1px solid red; */
   }
 
   .modal-image img {
@@ -181,33 +190,24 @@ html {
     display: flex;
     justify-content: flex-start;
     flex-flow: column wrap;
-   /* width: 50%; */
     width: 100%;
     margin: 10px;
-    /* border: 1px solid green; */
   }
 
   .modal-title {
     padding-left: 5px; 
-    font-size: 1.5rem;
   }
 
   .modal-description {
     display: flex;
     justify-content: flex-start;
     flex-flow: row wrap;
-    padding-left: 5px; 
-    padding-right: 2px;
-    padding-top: 5px;
-  }
-
-  .modal-description-text {
-    /* DELETE from both css and js if not needed. */
+    padding: 5px 5px 0px 5px;
   }
 
   .modal-links {
-    margin: 5px;
-    padding-top: 10px;
+    margin: 5px 0px 5px 0px;
+    padding: 5px 0px 0px 5px;
   }
 
   .modal-links-styling {
@@ -246,7 +246,6 @@ html {
 
   .modalNavigation {
     display: flex;
-    /* justify-content: center; */
     justify-content: flex-end;
     align-items: center;
     flex-flow: row wrap;
@@ -256,7 +255,6 @@ html {
 
   .arrowButtons {
     display: flex;
-    /* justify-content: flex-start; */
     justify-content: flex-end;
     align-items: center;
     flex-flow: row wrap;
@@ -285,8 +283,6 @@ html {
     height: 25px;
     border-radius: 25px;
     margin: 0px 10px 0px 10px;
-    /*padding: 0px 5px 0px 5px;*/ 
-    /* background: #E9B14C; */
     background-color: #ffffff;
   }
 
@@ -303,11 +299,9 @@ html {
     background-color: transparent;
   }     */
 
-  .previousModal { /*styling for button element*/
+  .previousModal { /*Styling for button element*/
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    /* align-content: center; */
     align-content: center;
     flex-flow: row wrap;
     width: 25px;
@@ -320,15 +314,12 @@ html {
   }
 
   .previousModal i { 
-    /* font-size: 1rem; */
     font-size: 0.9rem;
   }
 
-  .nextModal { /*styling for button element*/
+  .nextModal { /*Styling for button element*/
     display: flex;
     justify-content: center;
-    /* align-items: center; */
-    /* align-content: space-around; */
     align-content: center;
     flex-flow: row wrap;
     width: 25px;
@@ -341,17 +332,14 @@ html {
   }
 
   .nextModal i { 
-    /* font-size: 1rem; */
     font-size: 0.9rem;
   }
 
   .closeButton {
     display: flex;
-    /* justify-content: center; */
     justify-content: flex-end;
     align-content: center;
     flex-flow: row wrap;
-    /* width: 30%; */
     width: 20%;
     margin: 0;
   }
@@ -361,9 +349,7 @@ html {
     height: 60px;
     border-radius: 60px;
     border: none;
-    /* background-color: #05b8ee; */
     background-color: #ffffff;
-    /* color: #e1dbc7; */
     transform: scale(0.9);
     cursor: pointer;
     pointer-events: auto;
@@ -375,49 +361,13 @@ html {
   }
 
 
-  /* PORTFOLIO - MOBILE */
+  /* PORTFOLIO - Mobile */
   
   #portfolio {
     padding: 60px 0px 60px 0px;
   }
   
-  /* CONSIDER moving styling related to titles to Layout Special Styles or similar as 
-  styling is shared with Gallery items:*/
-
-  .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;  
-    flex-flow: row wrap;
-    width: 100%;
-    margin: 30px 0px;
-  }
-  
-  .main-title {
-    text-align: center;
-  }
-  
-  .title-line {
-    width: 100%;
-    height: 1px;
-    margin: 20px 170px 20px 170px;
-    background: #313131;
-    border: none;
-  }
-  
-  .subtitle {
-    text-align: center;
-  }
-  
-  
-  /* START: [xxx] styling applied 
-  to [xxx] in JavaScript: */
-  /* END */
-  
-  /* START: [xxx] styling applied in JavaScript: */
-  /* END */
-
-  /*CONSIDER grouping some of this styling for Projects and Gallery as 
+   /*CONSIDER grouping some of this styling for Projects and Gallery as 
   many are the same:*/
   
   #portfolio .content-background {
@@ -445,9 +395,7 @@ html {
   .project figure {
     width: 100%;
     margin: 20px 0px 20px 0px;
-    /* padding: 60px 0px; */
-    /* box-shadow: rgb(0 0 0 / 25%) 0px 4px 14px; */
-    /* border: 1px solid; */
+    padding: 0px 5px 0px 5px;
     border-radius: 12px;
     background-color: #e1dbc7;
   }
@@ -455,14 +403,11 @@ html {
   .project-title {
     padding: 40px 0px 0px 0px;
     text-align: center;
-    /* font-size: 5rem; */
     font-size: 2rem;
     text-transform: uppercase;
   }
 
   .project-title span {
-    /* color: #a3d5e6; */
-    /* color: #05b8ee; */
     color: #ffffff;
     font-size: 3rem;
   }
@@ -471,7 +416,7 @@ html {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 20px 40px 20px 0px;
+    margin: 20px 20px 20px 0px;
   }
 
   #portfolio .button-style {
@@ -489,7 +434,6 @@ html {
   #portfolio .button-style:hover {
     transform: scale(1);
     transition: 0.3s ease-in-out transform;
-    /* background-color: #139efa; */
   }
 
   /* GALLERY - MOBILE */
@@ -523,7 +467,6 @@ html {
   .gallery figure {
     width: 100%;
     margin: 20px 0px 20px 0px;
-    /* box-shadow: rgb(0 0 0 / 25%) 0px 4px 14px; */
     border-radius: 12px;
     background-color: #e1dbc7;
   }
@@ -531,14 +474,11 @@ html {
   .gallery-title {
     padding: 40px 0px 0px 0px;
     text-align: center;
-    /* font-size: 5rem; */
     font-size: 2rem;
     text-transform: uppercase;
   }
  
   .gallery-title span {
-    /* color: #a3d5e6; */
-    /* color: #05b8ee; */
     color: #ffffff;
     font-size: 3rem;
   }
@@ -548,7 +488,6 @@ html {
     height: 60px;
     border-radius: 60px;
     border: none;
-    /* background-color: #FF4433; */
     background-color: #EC5800;
     color: #e1dbc7;
     transform: scale(0.9);
@@ -585,8 +524,37 @@ html {
     /* FOOTER - Tablet */
   
     /* ---------------- Tablet Styles - Homepage ---------------- */
+        
+    /* MODAL WINDOW - Tablet */
+  
+    /* Styling applied in JavaScript: */
     
-    /* PROJECTS - Tablet */
+    .modal-wrapper {
+      padding: 30px;
+    }
+    
+    .modal-title {
+      font-size: 2rem;
+    }
+
+    .modal-description {
+      padding: 10px 5px 0px 5px;
+    }
+
+    .modal-links {
+      padding: 10px 0px 0px 5px;
+    }
+    
+    .arrowButtons {
+      width: 70%;
+    }
+
+    .closeButton {
+      width: 15%;
+    }
+
+
+    /* PORTFOLIO - Tablet */
   
     .title-line {
       margin: 20px 250px 20px 250px;
@@ -594,10 +562,6 @@ html {
   
     .title {
       margin: 50px 0px;
-    }
-  
-    .buttons-position {
-      margin: 10px 0px 60px 0px;
     }
   
     .project {
@@ -636,7 +600,16 @@ html {
   
     /* ------------------ Desktop Styles - Homepage ------------------ */
     
-    /* PROJECTS - DESKTOP */
+     /* MODAL WINDOW - Desktop */
+  
+    /* Styling applied in JavaScript: */
+
+    .modal-window {
+      max-width: 50%;
+    }
+
+
+    /* PORTFOLIO - Desktop */
   
     #projects {
       padding: 80px 0px 100px 0px;
@@ -654,21 +627,6 @@ html {
       margin: 30px 385px 30px 385px;
     }
     
-    .buttons-position {
-      margin: 10px 0px 70px 0px;
-    }
-  
-    .buttons-align {
-      width: 50%;
-    }
-  
-    /* START: Language filter buttons styling applied 
-    to the button element in JavaScript: */
-    .buttons-style {
-      font-size: 1rem;
-    }
-    /* END */
-  
     .project {
       width: 30%;
     }
@@ -677,7 +635,7 @@ html {
       margin: 30px 0px 30px 0px;
     }
 
-    /* GALLERY - Tablet */
+    /* GALLERY - Desktop */
 
     .gallery {
       width: 30%;
