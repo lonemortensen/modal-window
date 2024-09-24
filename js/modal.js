@@ -44,7 +44,7 @@ the modalData.js module and subsequently imported into the modal.js module from 
 */
 
 const getModalData = (type, selectedModalId) => {
-	// Calls function to access data and assigns returned data to new variable:
+	// Calls function to access Modal data and assigns returned data to new variable:
 	let modalData = accessData(); // To hold onto the returned result, assign the function to a variable.
 	console.log(modalData); // Works. Logs one 2D array with two inner 1D arrays, each with three objects.
 	console.log(type); // Works. Logs type correctly.
@@ -54,8 +54,9 @@ const getModalData = (type, selectedModalId) => {
 	let modalWindowData = {};
 	console.log(modalWindowData);
 
-	// Interates over outer array (2D) to get the index of the first inner array (1D) that contains the data for the selected Modal.
-	// Callback function uses the some() method to check whether there is a modal id value in the inner array that matches that of selectedModalId:
+	// Gets and stores the index of the array that contains the data that matches the selected Modal's id:
+	// - Interates over the outer array (two-dimensional) to get the index of the first inner array (one-dimensional) that contains the data for the selected Modal.
+	// - The findModalArrayIndex() callback function uses the some() method to check whether there is a modal id value in the inner array that matches that of selectedModalId.
 	// @return - True or false.
 	const findModalArrayIndex = (innerArray) => {
     	return innerArray.some(modal => modal.id === selectedModalId);
@@ -68,6 +69,7 @@ const getModalData = (type, selectedModalId) => {
 	console.log(modalArrayIndex); // Works. Logs the inner array, incl. objects, with the index contained in foundArrayIndex.
 
 	// Gets and stores the index of the Modal based on the Modal's id:
+	// - Uses the findIndex() method on the modalArrayIndex variable which contains the array that holds the selected Modal's id.
 	// - note: Gets the currently open Modal's index when user selects 'previous' or 'next' modal.
 	let modalWindowIndex = modalArrayIndex.findIndex(modal => modal.id === selectedModalId);
 	console.log(modalWindowIndex); // Works. Logs the index of the 'new' OR currently open Modal. 
@@ -82,7 +84,6 @@ const getModalData = (type, selectedModalId) => {
 
 	// Gets data for a 'new' Modal window: 
 	if (type == 'new') { 
-		// Q: Do I need a loop that will stop (break out) when it gets the requested modal's id - vs. going through them all?
 		// Loops through each object in the Modal data array: 
 		for (let modal of modalArrayIndex) {
 			//console.log(modal); // Works. Logs key-values of each object in the Modal data array.
@@ -149,7 +150,7 @@ const getModalData = (type, selectedModalId) => {
 /* ===== VIEW ===== */
 
 /**
- * NOTE: Do not remove eventlistener on Modal HTML elements as this prevents user from clicking (and opening) 
+ * NOTE: Do NOT remove eventlistener on Modal HTML elements as this prevents user from clicking (and opening) 
  * the same modal more than once unless the page reloads (and the event listener is added again)! 
 */
 
@@ -189,8 +190,8 @@ const createModalWindow = (selectedModalData) => {
 	closeModalWindow();
 
 	// Selects body and main elements:
-	const bodyElement = document.querySelector("body"); // Stay here or move inside function? Need for variable? 
-	const mainElement = document.querySelector("main"); // Stay here or move inside function? Need for variable? 
+	const bodyElement = document.querySelector("body"); 
+	const mainElement = document.querySelector("main"); 
 	
 	/* Modal backdrop: */  
 	modalBackdrop = document.createElement("div");
@@ -226,8 +227,8 @@ const createModalWindow = (selectedModalData) => {
 
 	/* Modal title:*/
 	const modalTitle = document.createElement("h2");
-	modalTitle.innerText = selectedModalData['title']; // Works! Logs the title of the passed object.
-	//console.log(selectedModalData);
+	modalTitle.innerText = selectedModalData['title']; 
+	//console.log(selectedModalData); // Works! Logs the title of the passed object.
 	modalTitle.classList.add("modal-title");
 	modalContent.appendChild(modalTitle);
 
@@ -381,17 +382,6 @@ const prepareModalWindow = (event, modalId) => {
 
 
 	// Checks and reassigns the value of the 'type' variable based on user selection: 
-
-	// let type = 'new';
-	// if (modalType) {
-	// 	if (modalType === 'previous') {
-	// 		type = 'previous';
-	// 	}
-	// 	else if (modalType === 'next') {
-	// 		type = 'next';
-	// 	}
-	// }
-
 	let type = 'new';
 	if (modalType || arrowKey) {
 		if (modalType === 'previous' || arrowKey === 'ArrowLeft') {

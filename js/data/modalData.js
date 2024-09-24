@@ -15,6 +15,7 @@ Built with: JavaScript, HTML5, CSS3, and Flexbox.
  * If multiple Modal window components are used on the webpage, each component's data is 
  * stored in a separate array.
 */
+
 const portfolioProjects = [ 
     { 
         id: "project-1-modal", 

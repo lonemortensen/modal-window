@@ -21,7 +21,7 @@ import {addModalEventListener, closeModalWindow} from "./modal.js";
 
 
 /**
- * NOTE: Do not remove eventlistener on Window as this prevents user from clicking (and opening) 
+ * NOTE: Do NOT remove eventlistener on Window as this prevents user from clicking (and opening) 
  * the same modal more than once unless the page reloads (and the event listener is added again)! 
 */
 
