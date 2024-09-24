@@ -1,9 +1,9 @@
 /* ====================================================================
-Project:  Modal Window
+Project:  Modal Windows
 Author:  Lone Mortensen
-Description:  TBD
+Description:  UPDATE
 
-Built with: JavaScript, HTML5, CSS3, and Flexbox.
+Built with: JavaScript, ES6 modules, HTML5, CSS3, and Flexbox.
 
 ===== *** =====
 
@@ -154,7 +154,7 @@ html {
     transform: scale(1);
     transition: 0.3s ease-in-out transform;
   }
-  
+
   
   /* -------------------- Base Header-Footer Styles -------------------- */
   

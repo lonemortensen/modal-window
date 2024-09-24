@@ -1,11 +1,15 @@
 /* ====================================================================
-Project:  Modal Window
+Project:  Modal Windows
 Author:  Lone Mortensen
-Description:  TBD
+Description:  UPDATE
 
 Built with: JavaScript, HTML5, CSS3, and Flexbox.
 
 ===== *** =====
+
+The modalData.js module:
+- contains the data for each modal window on the web page. 
+- stores the data for each modal component 
 
 ==================================================================== */
 
