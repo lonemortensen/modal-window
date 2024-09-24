@@ -106,6 +106,7 @@ html {
   
   /* Layout - Special Styles */
   
+  /* Title and subtitle: */
   .title {
     display: flex;
     justify-content: center;
@@ -129,6 +130,29 @@ html {
   
   .subtitle {
     text-align: center;
+  }
+  
+  /* Modal 'View' button: */
+  .view-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px 20px 20px 0px;
+  }
+
+  .button-style {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    border: none;
+    transform: scale(0.9);
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .button-style:hover {
+    transform: scale(1);
+    transition: 0.3s ease-in-out transform;
   }
   
   
@@ -412,30 +436,12 @@ html {
     font-size: 3rem;
   }
 
-  .view-button {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 20px 20px 20px 0px;
-  }
-
   #portfolio .button-style {
-    width: 60px;
-    height: 60px;
-    border-radius: 60px;
-    border: none;
-    background-color: #05b8ee;
     color: #e1dbc7;
-    transform: scale(0.9);
-    cursor: pointer;
-    pointer-events: auto;
+    background-color: #05b8ee;
   }
 
-  #portfolio .button-style:hover {
-    transform: scale(1);
-    transition: 0.3s ease-in-out transform;
-  }
-
+ 
   /* GALLERY - MOBILE */
 
   #gallery {
@@ -467,6 +473,7 @@ html {
   .gallery figure {
     width: 100%;
     margin: 20px 0px 20px 0px;
+    padding: 0px 5px 0px 5px;
     border-radius: 12px;
     background-color: #e1dbc7;
   }
@@ -484,20 +491,8 @@ html {
   }
 
   #gallery .button-style {
-    width: 60px;
-    height: 60px;
-    border-radius: 60px;
-    border: none;
-    background-color: #EC5800;
     color: #e1dbc7;
-    transform: scale(0.9);
-    cursor: pointer;
-    pointer-events: auto;
-  }
-
-  #gallery .button-style:hover {
-    transform: scale(1);
-    transition: 0.3s ease-in-out transform;
+    background-color: #EC5800;
   }
   
   /* -------------------------- Tablet Styles ------------------------- */
@@ -568,6 +563,7 @@ html {
       width: 45%;
     }
 
+
     /* GALLERY - Tablet */
 
     .gallery {
@@ -634,6 +630,7 @@ html {
     .project figure {
       margin: 30px 0px 30px 0px;
     }
+
 
     /* GALLERY - Desktop */
 
