@@ -1,62 +1,54 @@
 /* ====================================================================
-Project:  Modal Window
+Project:  Modal Windows
 Author:  Lone Mortensen
-Description:  TBD
-
-Built with: JavaScript, HTML5, CSS3, and Flexbox.
 
 ===== *** =====
 
 The modal.js module:
-- imports modal window data function from the modalData.js module.
-- handles the user's selection of modal, finds the matching modal data, 
-and renders all the modal's html and data to the web page.
-- exports event handler that closes open modals. 
+- imports function from modalData.js to access modal data.
+- processes user's selection of modal, incl.:
+	-- detects and identifies selection, 
+	-- finds the matching modal data, and 
+	-- renders selected modal's data and all it's html to web page.
+- exports event handler that closes any open modals for use in main.js. 
 - exports event handler that adds event listeners to each modal 
-html element.  
+html element for use in main.js.
+
+NOTE: The modal.js module contains logic only. It does not contain 
+any data that is specific the modal window components. 
 ==================================================================== */
 
 /**
  * Imports. 
 */
-// Imports function that accesses data for the Modals:
+
+// Imports function that accesses data for the modals:
 import {accessData} from "./data/modalData.js";
 
 
 /** 
  * Global variables.
 */
+
 // The modalBackdrop and modalWindow variables must be accessible to the closeModalWindow function.
-let modalBackdrop; // Variable is uninitialized to control when to create the html element in the DOM.
-let modalWindow; // Variable is uninitialized to control when to create the html element in the DOM.
+// Variables are uninitialized to control when to create the html elements in the DOM.
+let modalBackdrop; 
+let modalWindow; 
+
 
 /* ===== MODEL ===== */
 
 /**
- * Collects Modal data. 
- * Stores and returns data for the selected Modal's window as an object.
- * @param type — The type of Modal to get data for: 'new', 'next', or 'previous'.
- * @param selectedModalId — The id attribute value of the Modal selected by the user. 
- * @return — The object contains the data for the selected Modal window.
+ * Gets modal window data. 
+ * Finds and returns data for the user selected modal's window as an object.
+ * @param type — Type of modal to get data for: 'new', 'next', or 'previous'.
+ * @param selectedModalId — Html id attribute value of the modal selected by the user. 
+ * @return — Object containing the data for the selected modal window.
 */
-
-/* NOTE: The accessData function could not be imported into and accessed from the modal.js 
-when the function was placed in the main.js module. It is unclear what caused the error, 
-but it may be somehow related to the issue of 'circular dependency' and the import chain 
-when importing modules in JS. 
-When placing the accessData function directly in the modal.js module and accessing the data 
-from inside the modal.js module, the function works. To avoid the import chain problem 
-AND keep the modal.js module free of data, the accessData function is instead placed in 
-the modalData.js module and subsequently imported into the modal.js module from where it is called.   
-*/
-
 const getModalData = (type, selectedModalId) => {
-	// Calls function to access Modal data and assigns returned data to new variable:
-	let modalData = accessData(); // To hold onto the returned result, assign the function to a variable.
-	console.log(modalData); // Works. Logs one 2D array with two inner 1D arrays, each with three objects.
-	console.log(type); // Works. Logs type correctly.
-	console.log(selectedModalId); // Works. 
-
+	// Gets and stores modal data 2D array:
+	let modalData = accessData(); 
+	
 	// Stores the object data for the selected Modal's window:
 	let modalWindowData = {};
 	console.log(modalWindowData);

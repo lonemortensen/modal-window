@@ -1,28 +1,23 @@
 /* ====================================================================
 Project:  Modal Windows
 Author:  Lone Mortensen
-Description:  UPDATE
-
-Built with: JavaScript, HTML5, CSS3, and Flexbox.
 
 ===== *** =====
 
 The modalData.js module:
-- stores data for each modal window component on the page in 
-separate (1D) arrays.   
-- contains a function that combines multiple 1D arrays into a 2D array, 
+- stores data for each modal window component in separate (1D) arrays.   
+- contains function that combines the 1D arrays into a 2D array, 
 storing the data for all the modal windows. 
-- exports the function for use in the modal.js module.
+- exports function for use in modal.js.
 ==================================================================== */
 
 /**
- * Arrays (one-dimensional) store objects containing data for each of the Modals. 
- * The data is for use in the Modal windows.
- * If multiple Modal window components are used on the webpage, each component's data is 
- * stored in a separate array.
+ * Arrays (one-dimensional) store objects holding data for each of the modal windows. 
+ * If multiple modal window components are used on the web page, each component's 
+ * data is stored in a separate array.
 */
 
-/* Data for portfolio modal windows: */ 
+// Data for portfolio modal windows:  
 const portfolioProjects = [ 
     { 
         id: "project-1-modal", 
@@ -74,7 +69,7 @@ const portfolioProjects = [
     } 
 ];
 
-/* Data for gallery modal windows: */ 
+// Data for gallery modal windows:  
 const galleryItems = [ 
     { 
         id: "gallery-1-modal", 
@@ -127,27 +122,13 @@ const galleryItems = [
 ];
 
 
-/* NOTE: The accessData function could not be imported into and accessed from the modal.js 
-when the function was placed in the main.js module. It is unclear what caused the error, 
-but it may be somehow related to the issue of 'circular dependency' and the import chain 
-when importing modules in JS. 
-When placing the accessData function directly in the modal.js module and accessing the data 
-from inside the modal.js module, the function works. To avoid the import chain problem 
-(and to keep the modal.js module free of data), the accessData function is instead placed in 
-the modalData.js module and imported into the modal.js module from where it is called.   
-*/
-
 /**
- * Accesses and exports the data for the Modals. 
- * Combines multiple one-dimensional (1D) Modal data arrays into a two-dimensional (2D) data array.
- * - note: the use of a 2D array ensures the data for each modal window component is kept 
- * separate (in 1D arrays) and thus for each component to operate independently. 
- * @return — A 2D array containing data for the Modals.
+ * Exports function that combines data for the modals. 
+ * Combines one-dimensional (1D) modal data arrays into a two-dimensional (2D) array.
+ * @return — 2D array with modal data.
 */
 export const accessData = () => {
-	// Combines multiple 1D arrays into one 2D array:
     let data = [];
     data.push(portfolioProjects, galleryItems);
-    console.log(data); // Works. Logs one 2D array with two inner 1D arrays, each with three objects.
     return data;
 };
