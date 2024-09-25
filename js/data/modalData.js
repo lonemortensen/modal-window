@@ -8,9 +8,11 @@ Built with: JavaScript, HTML5, CSS3, and Flexbox.
 ===== *** =====
 
 The modalData.js module:
-- contains the data for each modal window on the web page. 
-- stores the data for each modal component 
-
+- stores data for each modal window component on the page in 
+separate (1D) arrays.   
+- contains a function that combines multiple 1D arrays into a 2D array, 
+storing the data for all the modal windows. 
+- exports the function for use in the modal.js module.
 ==================================================================== */
 
 /**
@@ -20,6 +22,7 @@ The modalData.js module:
  * stored in a separate array.
 */
 
+/* Data for portfolio modal windows: */ 
 const portfolioProjects = [ 
     { 
         id: "project-1-modal", 
@@ -71,6 +74,7 @@ const portfolioProjects = [
     } 
 ];
 
+/* Data for gallery modal windows: */ 
 const galleryItems = [ 
     { 
         id: "gallery-1-modal", 
@@ -136,6 +140,8 @@ the modalData.js module and imported into the modal.js module from where it is c
 /**
  * Accesses and exports the data for the Modals. 
  * Combines multiple one-dimensional (1D) Modal data arrays into a two-dimensional (2D) data array.
+ * - note: the use of a 2D array ensures the data for each modal window component is kept 
+ * separate (in 1D arrays) and thus for each component to operate independently. 
  * @return — A 2D array containing data for the Modals.
 */
 export const accessData = () => {

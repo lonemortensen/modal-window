@@ -8,8 +8,8 @@ contents. In addition to offering additional details about the selected
 item, the modal window allows users to navigate to the previous or next 
 window without first returning to the web page. 
 Design: The project consists of two modal window components on the same 
-web page. The use of ES6 modules allows for the script to reuse code 
-and handle multiple separate modal window components.    
+web page. The use of JavaScript modules allows for the script to reuse code 
+and be applied to multiple separate modal window components.    
 Built with: JavaScript, ES6 modules, HTML5, CSS3, and Flexbox.
 
 ===== *** =====
@@ -17,7 +17,7 @@ Built with: JavaScript, ES6 modules, HTML5, CSS3, and Flexbox.
 The main.js module:
 - connects to index.html.
 - imports event handlers from the modal.js module. 
-- ensures any open modal windows close when the page loads.
+- calls event handler to close any open modal windows when the page loads.
 - contains an IIFE that 1) selects the Modal html elements on the web page 
 and 2) calls an event handler that adds event listeners to each Modal html 
 element. 

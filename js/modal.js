@@ -7,6 +7,13 @@ Built with: JavaScript, HTML5, CSS3, and Flexbox.
 
 ===== *** =====
 
+The modal.js module:
+- imports modal window data function from the modalData.js module.
+- handles the user's selection of modal, finds the matching modal data, 
+and renders all the modal's html and data to the web page.
+- exports event handler that closes open modals. 
+- exports event handler that adds event listeners to each modal 
+html element.  
 ==================================================================== */
 
 /**
