@@ -3,7 +3,7 @@ Project:  Modal Windows
 Author:  Lone Mortensen
 Description:  This project uses modal windows to display information 
 about individual content items on a web page. When a user clicks on an
-item, a modal window appears on a blurred backdrop in front of the page 
+item, a modal window opens on a blurred backdrop in front of the page 
 contents. In addition to offering additional details about the selected 
 item, the modal window allows users to navigate to the previous or next 
 window without first returning to the web page. 
@@ -52,7 +52,7 @@ const modal = (function() {
 /**
  * NOTE: The 'modal' IIFE runs every time the script loads. 
  * If there are multiple modal window components on the page, event listeners 
- * are added to all modal component html elements. When modal window components 
+ * are added to all selected modal component html elements. When modal window components 
  * are added or removed, the modal IIFE needs updating.
 */ 
 
