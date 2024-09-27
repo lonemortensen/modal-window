@@ -53,18 +53,18 @@ const getModalData = (type, selectedModalId) => {
 	let modalWindowData = {};
 
 	// Callback function: 
-	// Checks if at least one 1D array meets callback condition, i.e. contains an object id value matching the selectedModalId. 
+	// Checks if at least one 1D array meets callback condition of containing an object id value matching the selectedModalId. 
 	// @return - True or false.
 	const findModalArrayIndex = (innerArray) => {
     	return innerArray.some(modal => modal.id === selectedModalId);
 	};
 	// Iterates over 2D array: 
-	// Finds and stores index of the first 1D array that meets callback function condition. 
+	// Finds index of the first 1D array that meets callback function condition. 
 	const foundArrayIndex = modalData.findIndex(findModalArrayIndex);
 	// Stores the 1D array that contains an object id value matching the selectedModalId:  
 	let modalArray = modalData[foundArrayIndex];
 
-	// Gets and stores the index of the selected modal:
+	// Finds and stores the index of the selected modal:
 	// Iterates over the 1D array that contains an object id value matching the selectedModalId. 
 	// - note: Gets the currently open modal's index when user selects 'previous' or 'next' modal.
 	let modalWindowIndex = modalArray.findIndex(modal => modal.id === selectedModalId);
@@ -137,15 +137,12 @@ const getModalData = (type, selectedModalId) => {
 /* ===== VIEW ===== */
 
 /**
- * NOTE: Do not remove eventlistener on modal html elements as this prevents 
- * user from clicking (opening) the same modal more than once unless the 
- * page reloads (and an event listener is added again). 
-*/
-
-/**
  * Adds event listeners to modal html elements.
  * Calls event handler to prepare a modal window. 
  * Exports function for use in main.js.
+ * NOTE: Do not remove eventlistener on modal html elements as this prevents 
+ * user from clicking (opening) the same modal more than once unless the 
+ * page reloads and an event listener is added again. 
  * @param modalELements - Modal html elements. 
 */
 export const addModalEventListener = (modalElements) => {
@@ -167,10 +164,9 @@ export const addModalEventListener = (modalElements) => {
  * @arg currentModalId - Id attribute value of the currently open modal window. 
 */
 const createModalWindow = (selectedModalData) => {
-	// Closes any currently open modal:
 	closeModalWindow();
 
-	// Selects body and main elements:
+	// Selects body and main elements for insertion of modal backdrop and window:
 	const bodyElement = document.querySelector("body"); 
 	const mainElement = document.querySelector("main"); 
 	
@@ -185,7 +181,7 @@ const createModalWindow = (selectedModalData) => {
 	modalWindow.setAttribute("id", selectedModalData['id']); 
 	modalWindow.classList.add("modal-window");
 	bodyElement.insertBefore(modalWindow, mainElement);
-	// Gets and stores the id attribute value of the currently open modal window:
+	// Gets and stores the html id attribute value of the currently open modal window:
 	const currentModalId = document.getElementById(selectedModalData['id']).id;
 
 	/* Modal wrapper:*/
@@ -294,7 +290,6 @@ const createModalWindow = (selectedModalData) => {
 	modalWrapper.appendChild(modalNavigation);
 
 	/* Modal navigation - keyboard:*/
-	// Checks which key the user pressed and either closes modal window or passes the id value of currently open modal:
 	const checkNavigationKey = (event) => {
 		if (event.key == "ArrowLeft" || event.key == "ArrowRight") {
 			prepareModalWindow(event, currentModalId);
@@ -302,7 +297,7 @@ const createModalWindow = (selectedModalData) => {
 			closeModalWindow(); 
 		}
 	};
-	// Adds key event listener to 'body' element:
+
 	bodyElement.addEventListener("keyup", checkNavigationKey, {once: true}); 
 };
 
@@ -322,40 +317,37 @@ export const closeModalWindow = () => {
 	}
 };
 
-/* !!!!! START HERE:*/
 
 /**
  * Prepares data for a modal window based on user's selection:
- * If user selects 'new' modal: Gets modal id from html id attribute via the event object.
- * NOTE: WHAT DOES IT MEAN THAT OPEN MODAL ID IS PASSED VIA EVENT LISTENER????
- * If user selects 'previous' or 'next' modal: Gets the currently open modal's id attribute value passed to function by event listeners.  
- * Calls Model to get data for the selected modal (passes modal type and id). 
- * Calls View to create a modal window (passes data for selected modal).  
- * @param event - Event object to get the type and id for the selected Modal AND the value of the arrow keyboard key pressed. 
- * @param modalId - The id attribute value for the currently open Modal.  
- * @arg type — The Modal type to get data for ('new', 'previous', or 'next').
- * @arg selectedModalId — The Modal id attribute value. Used for finding data for 'new', 'previous', or 'next' Modal.
- * @arg selectedModalData — The data for the selected Modal.
+ * If user selects 'new' modal: 
+ * -- The modal id is obtained from html id attribute via the event object.
+ * If user selects 'previous' or 'next' modal: 
+ * -- The currently open modal's html id attribute value is passed in as a parameter (cf. 'modalId').  
+ * Calls Model to get data for the selected modal. 
+ * Calls View to create a modal window.  
+ * @param event - To get the type and id for the selected modal and the value of the arrow key (keyboard). 
+ * @param modalId - The id attribute value for the currently open modal.  
+ * @arg type — The modal type to get data for (i.e. 'new', 'previous', or 'next').
+ * @arg selectedModalId — The modal id value. Used to find data for 'new', 'previous', or 'next' modal.
+ * @arg selectedModalData — The data for the selected modal.
  */
-
 const prepareModalWindow = (event, modalId) => {
-	// Gets and stores the type of Modal selected ('new', 'previous', or 'next'):
-	let modalType = event.currentTarget.dataset.navigation;
-	//console.log(modalType);
-	//console.log(event);
-
-	// Gets the id of the selected Modal:
+	// Gets the id attribute value of the selected modal (for 'new' modal only):
 	let selectedModalId = event.currentTarget.id;
-	console.log(selectedModalId);// Works. Logs id value for 'new' modal, but NOTHING for prev/nxt modal. 
 	
-	// Gets and stores the value of the arrow keyboard key pressed by user ('ArrowLeft' or 'ArrowRight'):
+	// Gets the type of modal selected (for 'previous' or 'next' modal only):
+	let modalType = event.currentTarget.dataset.navigation;
+	
+	// Gets the value of the arrow key pressed (keyboard 'ArrowLeft' or 'ArrowRight'):
 	let arrowKey = event.key;
-	console.log(arrowKey); // Works. Logs key value for both arrow keys.
 
-	// Assigns the id of the currently open Modal to a variable when user clicks 'previous' or 'next' buttons or uses arrow keys:
+	/* !!!!! START HERE:*/
+
+	// Assigns the id of the currently open modal to a variable 
+	// when user clicks 'previous' or 'next' buttons or uses arrow keys:
 	let openModalId = modalId; 
 	console.log(openModalId); // Works! 
-
 
 	// Checks and reassigns the value of the 'type' variable based on user selection: 
 	let type = 'new';

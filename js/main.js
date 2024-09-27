@@ -6,7 +6,8 @@ about individual content items on a web page. When a user clicks on an
 item, a modal window opens on a blurred backdrop in front of the page 
 contents. In addition to offering additional details about the selected 
 item, the modal window allows users to navigate to the previous or next 
-window without first returning to the web page. 
+window without first returning to the web page. Users can navigate using
+the window buttons or with their keyboard. 
 Design: The project consists of two different modal window components 
 on the same web page. The use of JavaScript modules allows for the script 
 to be reused and applied to multiple separate modal window components.    
