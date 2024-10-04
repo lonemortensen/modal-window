@@ -37,10 +37,10 @@ import {accessData} from "./data/modalData.js";
 let modalBackdrop; 
 let modalWindow; 
 
-// bodyElement:
+// bodyElement: NOTE: LIKELY DELETE
 // Selects the html body element for insertion of modal backdrop and window in the DOM. 
 // Must be accessible to the checkNavigationKey() function for keyboard navigation.
-const bodyElement = document.querySelector("body"); 
+//const bodyElement = document.querySelector("body"); 
 
 // currentModalId:
 // Value assigned in the createModalWindow() function.
@@ -91,7 +91,7 @@ const getModalData = (type, selectedModalId) => {
 
 	// Gets data for a 'new' modal window: 
 	if (type == 'new') { 
-		// Loops through each object in the modal array: 
+		// Loops through each modal object in the modal array: 
 		for (let modal of modalArray) {
 			// Loops through object keys to check if their value match the selectedModalId:
 			for (let key in modal) {
@@ -177,8 +177,12 @@ export const addModalEventListener = (modalElements) => {
 const createModalWindow = (selectedModalData) => {
 	closeModalWindow();
 
-	// Selects main element for insertion of modal backdrop and window:
+	// Selects body and main element for insertion of modal backdrop and modal window:
+	const bodyElement = document.querySelector("body"); 
 	const mainElement = document.querySelector("main"); 
+	
+	// Adds event listener to body element for modal window keyboard navigation:
+	bodyElement.addEventListener("keyup", checkNavigationKey); 
 	
 	/* Modal backdrop: */  
 	modalBackdrop = document.createElement("div");
@@ -301,6 +305,34 @@ const createModalWindow = (selectedModalData) => {
 };
 
 
+/* ===== CONTROLLER ===== */
+
+/**
+ * Closes any open modal window and removes modal backdrop:
+ * Exports function for use in main.js.
+*/
+export const closeModalWindow = () => {    
+	if (modalWindow) {
+		modalWindow.remove(); 
+ 	}
+	if (modalBackdrop) {
+		modalBackdrop.remove(); 
+	}
+};
+
+// export const closeModalWindow = () => {    
+// 	if (!modalWindow) {
+// 		return;
+// 	}
+// 	else if (modalWindow) {
+// 		modalWindow.remove(); 
+//  	}
+// 	if (modalBackdrop) {
+// 		modalBackdrop.remove(); 
+// 	}
+// };
+
+
 /**
  * Checks key values for keyboard navigation in modal windows:
  * -- If user presses arrow keys: Calls prepareModalWindow() and passes id 
@@ -322,24 +354,6 @@ const checkNavigationKey = (event) => {
 	}
 };
 
-bodyElement.addEventListener("keyup", checkNavigationKey); 
-
-
-/* ===== CONTROLLER ===== */
-
-/**
- * Closes any open modal window and removes modal backdrop:
- * Exports function for use in main.js.
-*/
-export const closeModalWindow = () => {    
-	if (modalWindow) {
-		modalWindow.remove(); 
- 	}
-	if (modalBackdrop) {
-		modalBackdrop.remove(); 
-	}
-};
-
 
 /**
  * Requests and passes data for a modal window based on user selection:
@@ -351,7 +365,7 @@ export const closeModalWindow = () => {
  * @arg type — The modal type to get data for: 'new', 'previous', or 'next'.
  * @arg selectedModalId — The modal id attribute value. Used to find data for 'new', 'previous', or 'next' modal.
  * @arg selectedModalData — The data for the selected modal.
- */
+*/
 const prepareModalWindow = (event, modalId) => {
 	console.log(modalId); 
 
