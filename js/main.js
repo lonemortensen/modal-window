@@ -28,7 +28,7 @@ element.
  * Imports. 
 */
 
-// Imports event handlers:
+// Event handlers:
 import {addModalEventListener, closeModalWindow} from "./modal.js"; 
 
 
@@ -40,7 +40,7 @@ window.addEventListener("load", closeModalWindow);
 
 
 /** 
- * 'modal' IIFE selects and stores html elements for all modal window components.
+ * The 'modal' IIFE selects and stores html elements for all modal window components.
  * Calls event handler to add event listener to each modal html element.
  * @arg modalElements - Modal html elements. 
 */

@@ -5,7 +5,7 @@ Author:  Lone Mortensen
 ===== *** =====
 
 The modalData.js module:
-- stores data for each modal window component in separate (1D) arrays.   
+- stores data for each modal window component in separate 1D arrays.   
 - contains function that combines the 1D arrays into a 2D array, 
 now storing the data for all the modal windows. 
 - exports function for use in modal.js.

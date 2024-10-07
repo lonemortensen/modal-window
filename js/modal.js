@@ -37,11 +37,6 @@ import {accessData} from "./data/modalData.js";
 let modalBackdrop; 
 let modalWindow; 
 
-// bodyElement: NOTE: LIKELY DELETE
-// Selects the html body element for insertion of modal backdrop and window in the DOM. 
-// Must be accessible to the checkNavigationKey() function for keyboard navigation.
-//const bodyElement = document.querySelector("body"); 
-
 // currentModalId:
 // Value assigned in the createModalWindow() function.
 // Must be accessible to the checkNavigationKey() function for keyboard navigation.
@@ -53,7 +48,7 @@ let currentModalId;
 /**
  * Gets modal window data. 
  * Finds and returns data for the user-selected modal's window as an object.
- * @param type — Type of modal to get data for: 'new', 'next', or 'previous'.
+ * @param type — Type of modal we need to get data for: 'new', 'next', or 'previous'.
  * @param selectedModalId — Html id attribute value of the modal selected by the user. 
  * @return — Object containing the data for the selected modal's window.
 */
@@ -64,17 +59,47 @@ const getModalData = (type, selectedModalId) => {
 	// Stores the object data for the selected modal's window:
 	let modalWindowData = {};
 
-	// Callback function: 
-	// Checks if at least one 1D array meets callback condition of containing an object id value matching the selectedModalId. 
-	// @return - True or false.
-	const findModalArrayIndex = (innerArray) => {
-    	return innerArray.some(modal => modal.id === selectedModalId);
+	// // Callback function: 
+	// // Checks if at least one 1D array meets callback condition of containing an object id value matching the selectedModalId. 
+	// // @return - True or false.
+	// const findModalArrayIndex = (innerArray) => {
+    // 	return innerArray.some(modal => modal.id === selectedModalId);
+	// };
+	// // Iterates over 2D array: 
+	// // Finds index of the first 1D array that meets callback function condition. 
+	// const foundArrayIndex = modalData.findIndex(findModalArrayIndex);
+	// // Stores the 1D array that contains an object id value matching the selectedModalId:  
+	// let modalArray = modalData[foundArrayIndex];
+
+	/*
+	* Finds the array that contains the selected modal's id value:
+	* Iterates over 2D array containing all modal data with callback function 
+	* to find the first 1D array that meets its condition. 
+	* Callback function checks if at least one 1D array meets callback condition of containing an 
+	* object id value matching the selectedModalId. 
+	* @param outerArray - The 2D array that contains all modal data.
+	* @param selectedModalId - The id value of the modal selected by the user. ELABORATE & ELABORATE!
+	* @return - The array that contains an object id value matching the selectedModalId. 
+	*/
+	const findModalArray = (outerArray, matchModalId) => {
+		// Callback function. 
+		// @return - True or false.
+		const findModalArrayIndex = (innerArray) => {
+			return innerArray.some(modal => modal.id === matchModalId);
+		};
+		
+		const foundArrayIndex = outerArray.findIndex(findModalArrayIndex);
+
+		// 1D array that contains an object id value matching the selectedModalId:  
+		let arrayIndex = outerArray[foundArrayIndex];
+
+		return arrayIndex;
 	};
-	// Iterates over 2D array: 
-	// Finds index of the first 1D array that meets callback function condition. 
-	const foundArrayIndex = modalData.findIndex(findModalArrayIndex);
-	// Stores the 1D array that contains an object id value matching the selectedModalId:  
-	let modalArray = modalData[foundArrayIndex];
+
+	let  modalArray = findModalArray(modalData, selectedModalId);
+	console.log(modalArray);
+
+
 
 	// Finds and stores the index of the selected modal:
 	// Iterates over the 1D array with an object id value matching the selectedModalId. 
@@ -168,6 +193,7 @@ export const addModalEventListener = (modalElements) => {
  * Creates and displays a modal window:
  * Adds blurred backdrop to web page.  
  * Adds html mark-up and css styling for modal window UI.
+ * Adds event listener to body element for keyboard navigation.
  * Adds event listeners to the modal window arrow and close buttons. 
  * Adds data for the selected modal to the html mark-up.
  * Accesses the html id attribute of the currently open modal. 
@@ -292,7 +318,7 @@ const createModalWindow = (selectedModalData) => {
 		prepareModalWindow(event, currentModalId, {once: true});
 	}); 
 	
-	/* - close button:*/
+	/* -- close button:*/
 	const closeButton = modalNavigation.appendChild(document.createElement("div"));
 	closeButton.classList.add("closeButton");
 	const closeModal = closeButton.appendChild(document.createElement("button"));
@@ -362,7 +388,7 @@ const checkNavigationKey = (event) => {
  * in as a parameter and the open modal's index is later used to find the next or previous modal. 
  * @param event - To get the type and id values for the selected modal (click and keyboard events). 
  * @param modalId - The id attribute value for the currently open modal.  
- * @arg type — The modal type to get data for: 'new', 'previous', or 'next'.
+ * @arg type — The modal type we need to get data for: 'new', 'previous', or 'next'.
  * @arg selectedModalId — The modal id attribute value. Used to find data for 'new', 'previous', or 'next' modal.
  * @arg selectedModalData — The data for the selected modal.
 */
@@ -370,7 +396,7 @@ const prepareModalWindow = (event, modalId) => {
 	console.log(modalId); 
 
 	// The id attribute value of the selected modal: 
-	// Checks and (re)assigns the value of the 'selectedModalId' variable based on user selection.
+	// (Re)assigns the value of the 'selectedModalId' variable based on user selection.
 	let selectedModalId = event.currentTarget.id; 
 	let openModalId = modalId;   
 	console.log(openModalId);
@@ -381,7 +407,7 @@ const prepareModalWindow = (event, modalId) => {
 	console.log(selectedModalId);
 
 	// The type of modal selected:  
-	// Checks and re-assigns the value of the 'type' variable based on user selection.
+	// Checks and (re)assigns the value of the 'type' variable based on user selection.
 	// Uses click and keyboard events to assign type for 'previous' and 'next' modal.  
 	let modalType = event.currentTarget.dataset.navigation; 
 	let arrowKey = event.key; 
