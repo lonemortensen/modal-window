@@ -48,16 +48,16 @@ let currentModalId;
  * @return — Object containing the data for the selected modal's window.
 */
 const getModalData = (type, selectedModalId) => {
-	// Gets and stores 2D array with modal data:
+	// Gets 2D array with modal data:
 	let modalData = accessData(); 
 	
-	// Stores the object data for the selected modal's window:
+	// Stores the data for the selected modal's window:
 	let modalWindowData = {};
 	
 	// Helper function: 
 	// Iterates over 2D array containing all modal data.
-	// Callback function checks if at least one 1D array meets condition of holding an 
-	// object id value matching that of the selected modal. 
+	// Callback function checks if at least one 1D modal data array meets condition of   
+	// holding an object id value matching that of the selected modal. 
 	// @param outerArray - The 2D array that contains all modal data (cf. modalData).
 	// @param matchModalId - The id attribute value of the modal selected by the user (cf. selectedModalId).
 	// @return - The first 1D array that holds an object with an id value of matchModalId. 
@@ -83,12 +83,12 @@ const getModalData = (type, selectedModalId) => {
 	let  modalArray = findModalArray(modalData, selectedModalId);
 	console.log(modalArray);
 
-	// Gets the index of the selected modal.
+	// Gets the index of the selected modal in the 1D array:
 	// - note: Gets the currently open modal's index when user selects 'previous' or 'next' modal.
 	let modalWindowIndex = modalArray.findIndex(modal => modal.id === selectedModalId);
 
 	// Helper function:
-	// Adds data for the selected modal to the modalWindowData object as key-value pairs:
+	// Adds data for the selected modal to the modalWindowData object:
 	// @param selectedModal - The data for the selected modal.
 	const addModalWindowData = (selectedModal) => {   
 		for (let key in selectedModal) {
@@ -182,7 +182,7 @@ export const addModalEventListener = (modalElements) => {
  * Adds data for the selected modal to the html mark-up.
  * Accesses the html id attribute of the currently open modal. 
  * @param selectedModalData — Object with data for the selected modal.
- * @arg currentModalId - Id attribute value of the currently open modal window. 
+ * @arg currentModalId - Html id attribute value of the currently open modal window. 
 */
 const createModalWindow = (selectedModalData) => {
 	closeModalWindow();
@@ -318,7 +318,7 @@ const createModalWindow = (selectedModalData) => {
 /* ===== CONTROLLER ===== */
 
 /**
- * Closes any open modal window and removes modal backdrop:
+ * Closes open modal window and removes modal backdrop:
  * Exports function for use in main.js.
 */
 export const closeModalWindow = () => {    
@@ -330,25 +330,13 @@ export const closeModalWindow = () => {
 	}
 };
 
-// export const closeModalWindow = () => {    
-// 	if (!modalWindow) {
-// 		return;
-// 	}
-// 	else if (modalWindow) {
-// 		modalWindow.remove(); 
-//  	}
-// 	if (modalBackdrop) {
-// 		modalBackdrop.remove(); 
-// 	}
-// };
-
 
 /**
  * Checks key values for keyboard navigation in modal windows:
  * -- If user presses arrow keys: Calls prepareModalWindow() and passes id 
  * attribute value of the currently open modal (currentModalId).
  * -- If user presses escape key: Closes the modal window.
- * @param event - To get the key value for the arrow and escape keys. 
+ * @param event - To get the key values for the arrow and escape keys. 
 */
 const checkNavigationKey = (event) => {
 	if (event.key == "ArrowLeft" || event.key == "ArrowRight") {
@@ -368,11 +356,11 @@ const checkNavigationKey = (event) => {
 /**
  * Requests and passes data for a modal window based on user selection:
  * -- If user selects 'new' modal: The modal id is obtained from the html id attribute via the event object.
- * -- If user selects 'previous' or 'next' modal: The currently open modal's html id attribute value is passed 
- * in as a parameter and the open modal's index is later used to find the next or previous modal. 
+ * -- If user selects 'previous' or 'next' modal: The currently open modal's html id attribute value (modalId) is  
+ * passed in as a parameter and the open modal's index is later used to find the next or previous modal. 
  * @param event - To get the type and id values for the selected modal (click and keyboard events). 
  * @param modalId - The id attribute value for the currently open modal.  
- * @arg type — The modal type we need to get data for: 'new', 'previous', or 'next'.
+ * @arg type — Type of modal to get data for: 'new', 'next', or 'previous'.
  * @arg selectedModalId — The modal id attribute value. Used to find data for 'new', 'previous', or 'next' modal.
  * @arg selectedModalData — The data for the selected modal.
 */
