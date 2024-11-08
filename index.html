@@ -1,14 +1,21 @@
 <!-- ====================================================================
-Project: Modal Window
+Project:  Modal Windows
 Author:  Lone Mortensen
-Description:  TBD
-
-Built with: JavaScript, HTML5, CSS3, and Flexbox.
+Description:  This project uses modal windows to display information 
+about individual content items on a web page. When a user clicks on an
+item, a modal window opens on a blurred backdrop in front of the page 
+contents. In addition to offering additional details about the selected 
+item, the modal window allows users to navigate to the previous or next 
+window without first returning to the web page. Users can navigate using
+the window buttons or with their keyboard. 
+Design: The project consists of two different modal window components 
+on the same web page. The use of JavaScript modules allows for the script 
+to be reused and applied to multiple separate modal window components.    
+Built with: JavaScript, ES6 modules, HTML5, CSS3, and Flexbox.
 
 ===== *** =====
 
 ==================================================================== -->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +45,7 @@ Built with: JavaScript, HTML5, CSS3, and Flexbox.
             <div class="content-background">
                 <div class="content-wrapper">
                     <!--portfolio project items -->
-                    <div class="portfolio-wrapper">
+                    <div class="component-wrapper">
                         <article id="project-1" class="project">
                             <figure>
                                 <div>
@@ -116,7 +123,7 @@ Built with: JavaScript, HTML5, CSS3, and Flexbox.
             <div class="content-background">
                 <div class="content-wrapper">    
                     <!--gallery items-->
-                    <div class="gallery-wrapper">
+                    <div class="component-wrapper">
                         <article id="gallery-1" class="gallery">
                             <figure>
                                 <div>
@@ -188,44 +195,3 @@ Built with: JavaScript, HTML5, CSS3, and Flexbox.
 </body>
 </html>
 
-
-
-
-<!--DELETE - Modal window html markup DRAFT for use in modal.js:-->
-<!--
-<div class="modalWindow">
-    <div class="modalWrapper">
-        <figure class="modalImage">
-            <img>
-        </figure>
-        <div class="modalContent">
-            <h2 class="modalTitle"></h2>
-            <div class="modalDescription">
-                <p></p>
-            </div>
-            <div class="modalLinks">
-                <div class="modalLink-1">
-                    <a></a>
-                </div>
-                <div class="modalLink-2">
-                    <a></a>
-                </div>
-            </div>
-        </div>
-        <div class="modalNavigation">
-            <ul class="arrowButtons">
-                <li class="arrowPrevious">
-                    <button class="previousModal"></button>
-                </li>
-                <li class="arrowNext">
-                    <button class="nextModal"></button>
-                </li>    
-            </ul>
-            <div class="closeButton">
-                <button class="closeModal"></button>
-            </div>
-        </div>
-        
-    </div>
-</div>
--->

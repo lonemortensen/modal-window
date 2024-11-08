@@ -1,26 +1,34 @@
 /* ====================================================================
 Project:  Modal Windows
 Author:  Lone Mortensen
-Description:  UPDATE
-
+Description:  This project uses modal windows to display information 
+about individual content items on a web page. When a user clicks on an
+item, a modal window opens on a blurred backdrop in front of the page 
+contents. In addition to offering additional details about the selected 
+item, the modal window allows users to navigate to the previous or next 
+window without first returning to the web page. Users can navigate using
+the window buttons or with their keyboard. 
+Design: The project consists of two different modal window components 
+on the same web page. The use of JavaScript modules allows for the script 
+to be reused and applied to multiple separate modal window components.    
 Built with: JavaScript, ES6 modules, HTML5, CSS3, and Flexbox.
 
 ===== *** =====
 
 ==================================================================== */
 
-/* -------------------- Global Styles -------------------- */
+  /* -------------------- Global Styles -------------------- */
 
-/* Fonts:
-Headings: 'Alata', sans-serif;
-Subheadings: 'Alata', sans-serif;
-Paragraph text, regular 400: 'Nunito Sans', sans-serif;
-Paragraph text, bold 700: 'Nunito Sans', sans-serif;
-*/
+  /* Fonts:
+  Headings: 'Alata', sans-serif;
+  Subheadings: 'Alata', sans-serif;
+  Paragraph text, regular 400: 'Nunito Sans', sans-serif;
+  Paragraph text, bold 700: 'Nunito Sans', sans-serif;
+  */
 
-html {
-    font-size: 16px;
-    scroll-behavior: smooth;
+  html {
+      font-size: 16px;
+      scroll-behavior: smooth;
   }
   
   body {
@@ -91,6 +99,16 @@ html {
     align-items: center;
     width: 100%;
   }
+
+  .component-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; 
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 50px 0px;
+    padding: 0px 20px;
+  }
   
   h1,
   h2,
@@ -106,7 +124,7 @@ html {
   
   /* Layout - Special Styles */
   
-  /* Title and subtitle: */
+  /* -- title and subtitle: */
   .title {
     display: flex;
     justify-content: center;
@@ -132,7 +150,7 @@ html {
     text-align: center;
   }
   
-  /* Modal 'View' button: */
+  /* -- modal 'View' button: */
   .view-button {
     display: flex;
     justify-content: flex-end;
@@ -244,7 +262,7 @@ html {
     color: #9c9c9c;
   }
 
-  .modalLink-1 {
+  .modalLink-1, .modalLink-2 {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -252,19 +270,7 @@ html {
     padding: 5px 0px 5px 0px;
   }
 
-  .modalLink-1 i {
-    margin-left: 10px;
-  }
-
-  .modalLink-2 { 
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    padding: 5px 0px 5px 0px;
-  }
-
-  .modalLink-2 i {
+  .modalLink-1 i, .modalLink-2 i {
     margin-left: 10px;
   }
 
@@ -286,15 +292,7 @@ html {
     margin: 0;
   }
 
-  .arrowPrevious {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: row wrap;
-    width: 20%;
-  }
-
-  .arrowNext {
+  .arrowPrevious, .arrowNext {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -309,21 +307,9 @@ html {
     margin: 0px 10px 0px 10px;
     background-color: #ffffff;
   }
-
-  /*
-  Create arrows with css:
-	https://www.tutorialspoint.com/css/css_arrows.htm#:~:text=Arrows%20can%20be%20created%20using,direction%20and%20amount%20of%20rotation.
-  */
-
-  /* .arrow {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-    background-color: transparent;
-  }     */
-
-  .previousModal { /*Styling for button element*/
+ 
+  .previousModal, .nextModal { 
+    /*Styling for button element:*/
     display: flex;
     justify-content: center;
     align-content: center;
@@ -337,25 +323,7 @@ html {
     pointer-events: auto;
   }
 
-  .previousModal i { 
-    font-size: 0.9rem;
-  }
-
-  .nextModal { /*Styling for button element*/
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-flow: row wrap;
-    width: 25px;
-    height: 25px;
-    border-radius: 25px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    pointer-events: auto;
-  }
-
-  .nextModal i { 
+  .previousModal i, .nextModal i { 
     font-size: 0.9rem;
   }
 
@@ -390,25 +358,12 @@ html {
   #portfolio {
     padding: 60px 0px 60px 0px;
   }
-  
-   /*CONSIDER grouping some of this styling for Projects and Gallery as 
-  many are the same:*/
-  
+    
   #portfolio .content-background {
     margin: 60px 0px 0px 0px;
     background-color: #453E4F;
   }  
-
-  .portfolio-wrapper {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start; 
-    flex-flow: row wrap;
-    width: 100%;
-    margin: 50px 0px;
-    padding: 0px 20px;
-  }
-  
+ 
   .project {
     display: flex;
     justify-content: center;
@@ -448,20 +403,10 @@ html {
     padding: 60px 0px 60px 0px;
   }
 
- #gallery .content-background {
+  #gallery .content-background {
     margin: 60px 0px 60px 0px;
     background-color: #355E3B;
   }  
-
-  .gallery-wrapper {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start; 
-    flex-flow: row wrap;
-    width: 100%;
-    margin: 50px 0px;
-    padding: 0px 20px;
-  }
 
   .gallery {
     display: flex;
@@ -512,6 +457,17 @@ html {
     h4 {
       font-size: 1.85rem;
     }
+
+    /* Layout - Special Styles - Tablet */
+  
+    /* -- title and subtitle: */
+    .title-line {
+      margin: 20px 250px 20px 250px;
+    }
+  
+    .title {
+      margin: 50px 0px;
+    }
   
     /* ------------- Tablet - Base Header-Footer Styles ------------- *
     
@@ -519,7 +475,7 @@ html {
     /* FOOTER - Tablet */
   
     /* ---------------- Tablet Styles - Homepage ---------------- */
-        
+   
     /* MODAL WINDOW - Tablet */
   
     /* Styling applied in JavaScript: */
@@ -551,14 +507,6 @@ html {
 
     /* PORTFOLIO - Tablet */
   
-    .title-line {
-      margin: 20px 250px 20px 250px;
-    }
-  
-    .title {
-      margin: 50px 0px;
-    }
-  
     .project {
       width: 45%;
     }
@@ -588,6 +536,21 @@ html {
     h4 {
       font-size: 2.25rem;
     }
+
+    .content-wrapper {
+      max-width: 1200px;
+    }
+
+    /* Layout - Special Styles - Desktop */
+  
+    /* -- title and subtitle: */
+    .title {
+      margin: 60px 0px;
+    }
+  
+    .title-line {
+      margin: 30px 385px 30px 385px;
+    }
   
     /* ------------- Desktop - Base Header-Footer Styles ------------- *
     
@@ -606,23 +569,7 @@ html {
 
 
     /* PORTFOLIO - Desktop */
-  
-    #projects {
-      padding: 80px 0px 100px 0px;
-    }
-      
-    .content-wrapper {
-      max-width: 1200px;
-    }
-  
-    .title {
-      margin: 60px 0px;
-    }
-  
-    .title-line {
-      margin: 30px 385px 30px 385px;
-    }
-    
+         
     .project {
       width: 30%;
     }
@@ -636,5 +583,9 @@ html {
 
     .gallery {
       width: 30%;
+    }
+
+    .gallery figure {
+      margin: 30px 0px 30px 0px;
     }
   }    
