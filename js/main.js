@@ -17,18 +17,17 @@ Built with: JavaScript, ES6 modules, HTML5, CSS3, and Flexbox.
 
 The main.js module:
 - connects to index.html.
-- imports event handlers from the modal.js module. 
-- calls event handler to close any open modal windows when the page loads.
+- imports from modal.js.
+- calls event handler in modal.js to close any open modal 
+windows when the page loads.
 - contains an IIFE that 1) selects the modal html elements on the web page 
-and 2) calls an event handler to add event listeners to each modal html 
-element. 
+and 2) calls a function in modal.js to add event listeners to each modal 
+html element. 
 ==================================================================== */
 
 /**
  * Imports. 
 */
-
-// Event handlers:
 import {addModalEventListener, closeModalWindow} from "./modal.js"; 
 
 
@@ -40,25 +39,14 @@ window.addEventListener("load", closeModalWindow);
 
 
 /** 
- * The 'modal' IIFE selects and stores html elements for all modal window components.
- * Calls event handler to add event listener to each modal html element.
+ * The 'modal' IIFE runs every time the script loads.
+ * Selects and stores html elements for all modal window components.
+ * Calls function to add event listener to each modal html element.
+ * ! NOTE: If modal window components are added to or removed from the 
+ * web page, the IIFE needs updating.
  * @arg modalElements - Modal html elements. 
 */
 const modal = (function() {
     const modalElements = document.querySelectorAll('.view-project, .view-gallery'); 
     addModalEventListener(modalElements); 
 })();
-
-
-/**
- * NOTE: The 'modal' IIFE runs every time the script loads. 
- * If there are multiple modal window components on the page, event listeners 
- * are added to all selected modal component html elements. When modal window components 
- * are added or removed, the modal IIFE needs updating.
-*/ 
-
-
-
-
-
-

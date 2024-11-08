@@ -5,21 +5,19 @@ Author:  Lone Mortensen
 ===== *** =====
 
 The modal.js module:
-- imports function from modalData.js to access modal data.
+- imports from modalData.js.
 - processes user's selection of modal, incl.:
 	-- detects and identifies modal selection, 
 	-- finds the matching modal data, and 
-	-- renders selected modal's data and all it's html to web page.
-- exports event handler that closes any open modals for use in main.js. 
-- exports event handler that adds event listeners to each modal 
-html element for use in main.js.
+	-- renders selected modal's data and it's html and css to web page.
+- exports event handler that closes open modals for use in main.js. 
+- exports function that adds event listeners to each modal html element 
+for use in main.js.
 ==================================================================== */
 
 /**
  * Imports. 
 */
-
-// Function that gets data for all the modals:
 import {accessData} from "./data/modalData.js";
 
 
@@ -27,19 +25,16 @@ import {accessData} from "./data/modalData.js";
  * Global variables.
 */
 
-// NOTE!!! Consider if some of global variables can be exported from their respective functions instead???? Seems like better JS practice...
-// Won't work for currentModalId
-
 // modalBackdrop and modalWindow: 
-// Holds DOM html mark-up for backdrop and modal window. 
-// Values assigned in the createModalWindow() function.
-// Must be accessible to the closeModalWindow() function. 
+// Holds html mark-up for backdrop and modal window. 
+// Values assigned in createModalWindow().
+// Must be accessible to closeModalWindow(). 
 let modalBackdrop; 
 let modalWindow; 
 
 // currentModalId:
-// Value assigned in the createModalWindow() function.
-// Must be accessible to the checkNavigationKey() function for keyboard navigation.
+// Value assigned in createModalWindow().
+// Must be accessible to checkNavigationKey() for keyboard navigation.
 let currentModalId; 
 
 
@@ -48,8 +43,8 @@ let currentModalId;
 /**
  * Gets modal window data. 
  * Finds and returns data for the user-selected modal's window as an object.
- * @param type — Type of modal we need to get data for: 'new', 'next', or 'previous'.
- * @param selectedModalId — Html id attribute value of the modal selected by the user. 
+ * @param type — Type of modal to get data for: 'new', 'next', or 'previous'.
+ * @param selectedModalId — HTML id attribute value of the modal selected by the user. 
  * @return — Object containing the data for the selected modal's window.
 */
 const getModalData = (type, selectedModalId) => {
@@ -58,29 +53,14 @@ const getModalData = (type, selectedModalId) => {
 	
 	// Stores the object data for the selected modal's window:
 	let modalWindowData = {};
-
-	// // Callback function: 
-	// // Checks if at least one 1D array meets callback condition of containing an object id value matching the selectedModalId. 
-	// // @return - True or false.
-	// const findModalArrayIndex = (innerArray) => {
-    // 	return innerArray.some(modal => modal.id === selectedModalId);
-	// };
-	// // Iterates over 2D array: 
-	// // Finds index of the first 1D array that meets callback function condition. 
-	// const foundArrayIndex = modalData.findIndex(findModalArrayIndex);
-	// // Stores the 1D array that contains an object id value matching the selectedModalId:  
-	// let modalArray = modalData[foundArrayIndex];
-
-	/*
-	* Finds the array that contains the selected modal's id value:
-	* Iterates over 2D array containing all modal data with callback function 
-	* to find the first 1D array that meets its condition. 
-	* Callback function checks if at least one 1D array meets callback condition of containing an 
-	* object id value matching the selectedModalId. 
-	* @param outerArray - The 2D array that contains all modal data.
-	* @param selectedModalId - The id value of the modal selected by the user. ELABORATE & ELABORATE!
-	* @return - The array that contains an object id value matching the selectedModalId. 
-	*/
+	
+	// Helper function: 
+	// Iterates over 2D array containing all modal data.
+	// Callback function checks if at least one 1D array meets condition of holding an 
+	// object id value matching that of the selected modal. 
+	// @param outerArray - The 2D array that contains all modal data (cf. modalData).
+	// @param matchModalId - The id attribute value of the modal selected by the user (cf. selectedModalId).
+	// @return - The first 1D array that holds an object with an id value of matchModalId. 
 	const findModalArray = (outerArray, matchModalId) => {
 		// Callback function. 
 		// @return - True or false.
@@ -88,24 +68,26 @@ const getModalData = (type, selectedModalId) => {
 			return innerArray.some(modal => modal.id === matchModalId);
 		};
 		
+		// Gets the index of the 1D array that holds an object id value matching that of the selected modal:  
 		const foundArrayIndex = outerArray.findIndex(findModalArrayIndex);
+		console.log(foundArrayIndex);
 
-		// 1D array that contains an object id value matching the selectedModalId:  
+		// The 1D array that holds an object id value matching that of the selected modal:  
 		let arrayIndex = outerArray[foundArrayIndex];
+		console.log(arrayIndex);
 
 		return arrayIndex;
 	};
 
+	// Gets the 1D array that holds an object id value matching that of the selected modal:  
 	let  modalArray = findModalArray(modalData, selectedModalId);
 	console.log(modalArray);
 
-
-
-	// Finds and stores the index of the selected modal:
-	// Iterates over the 1D array with an object id value matching the selectedModalId. 
+	// Gets the index of the selected modal.
 	// - note: Gets the currently open modal's index when user selects 'previous' or 'next' modal.
 	let modalWindowIndex = modalArray.findIndex(modal => modal.id === selectedModalId);
-	
+
+	// Helper function:
 	// Adds data for the selected modal to the modalWindowData object as key-value pairs:
 	// @param selectedModal - The data for the selected modal.
 	const addModalWindowData = (selectedModal) => {   
@@ -118,7 +100,7 @@ const getModalData = (type, selectedModalId) => {
 	if (type == 'new') { 
 		// Loops through each modal object in the modal array: 
 		for (let modal of modalArray) {
-			// Loops through object keys to check if their value match the selectedModalId:
+			// Loops through object keys to check if their value match selectedModalId:
 			for (let key in modal) {
 				if (modal[key] === selectedModalId) {
 					let newModal = modal;
@@ -130,10 +112,11 @@ const getModalData = (type, selectedModalId) => {
 
 	//Gets data for the 'previous' modal window:
 	if (type == 'previous') {
-		// Gets data for 'previous' modal window based on index of currently open modal window:
-		// @param currentModal - Index of the currently open modal (modalWindowIndex).
-		// @param modalArray - The 1D modal array that contains the selected modal (modalArray). 
-		// @return - Data for the modal that comes before the current modal.
+		// Helper function:
+		// Gets data for 'previous' modal window based on index of currently open modal window.
+		// @param currentModal - Index of the currently open modal (cf. modalWindowIndex).
+		// @param modalArray - The 1D modal array that contains the selected modal (cf. modalArray). 
+		// @return - Data for the modal that comes before the currently open modal.
 		// - note: function accesses array in a circular manner, accessing the last modal if the current modal is the first one.
 		const getPreviousModal = (currentModal, modalArray) => {
 			let i = currentModal - 1;
@@ -149,10 +132,11 @@ const getModalData = (type, selectedModalId) => {
 
 	// Gets data for the 'next' modal window: 
 	if (type == 'next') {
-		// Gets data for 'next' modal based on index of currently open modal window:
-		// @param currentModal - Index of the currently open modal (modalWindowIndex).
-		// @param modalArray - The 1D modal array that contains the selected modal (modalArray). 
-		// @return - Data for the modal that comes after the current modal.
+		// Helper function:
+		// Gets data for 'next' modal based on index of currently open modal window.
+		// @param currentModal - Index of the currently open modal (cf. modalWindowIndex).
+		// @param modalArray - The 1D modal array that contains the selected modal (cf. modalArray). 
+		// @return - Data for the modal that comes after the currently open modal.
 		// - note: function accesses array in a circular manner, accessing the first modal if the current modal is the last one.
 		const getNextModal = (currentModal, modalArray) => {
 			let i = currentModal + 1;
@@ -177,7 +161,7 @@ const getModalData = (type, selectedModalId) => {
  * Adds event listeners to modal html elements.
  * Calls event handler to prepare a modal window. 
  * Exports function for use in main.js.
- * NOTE: Do not remove eventlistener on modal html elements as this prevents 
+ * ! NOTE: Do not remove eventlistener on modal html elements as this prevents 
  * user from clicking (opening) the same modal more than once unless the 
  * page reloads and an event listener is added again. 
  * @param modalELements - Modal html elements. 

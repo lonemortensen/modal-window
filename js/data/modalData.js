@@ -17,7 +17,7 @@ now storing the data for all the modal windows.
  * data is stored in a separate array.
 */
 
-// Data for portfolio modal windows:  
+// Data for My Portfolio modal windows:  
 const portfolioProjects = [ 
     { 
         id: "project-1-modal", 
@@ -69,7 +69,7 @@ const portfolioProjects = [
     } 
 ];
 
-// Data for gallery modal windows:  
+// Data for My Gallery modal windows:  
 const galleryItems = [ 
     { 
         id: "gallery-1-modal", 
