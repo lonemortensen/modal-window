@@ -59,5 +59,4 @@ Main features of the Modal Windows project:
 - Flexbox
 
 ## Launch
-! UPDATE
-[See the live version of the Modal Windows project here.](https://lonemortensen.github.io/tab-panel/)
+[See the live version of the Modal Windows project here.](https://lonemortensen.github.io/modal-window/)
