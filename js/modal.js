@@ -70,18 +70,15 @@ const getModalData = (type, selectedModalId) => {
 		
 		// Gets the index of the 1D array that holds an object id value matching that of the selected modal:  
 		const foundArrayIndex = outerArray.findIndex(findModalArrayIndex);
-		console.log(foundArrayIndex);
 
 		// The 1D array that holds an object id value matching that of the selected modal:  
 		let arrayIndex = outerArray[foundArrayIndex];
-		console.log(arrayIndex);
 
 		return arrayIndex;
 	};
 
 	// Gets the 1D array that holds an object id value matching that of the selected modal:  
 	let  modalArray = findModalArray(modalData, selectedModalId);
-	console.log(modalArray);
 
 	// Gets the index of the selected modal in the 1D array:
 	// - note: Gets the currently open modal's index when user selects 'previous' or 'next' modal.
@@ -345,7 +342,6 @@ const checkNavigationKey = (event) => {
 		if (!isKeyUpHandled) {
 			prepareModalWindow(event, currentModalId);
 			isKeyUpHandled = true;		
-			console.log(isKeyUpHandled);
 		}
 	} else if (event.key == "Escape") {
 		closeModalWindow(); 
@@ -365,25 +361,20 @@ const checkNavigationKey = (event) => {
  * @arg selectedModalData — The data for the selected modal.
 */
 const prepareModalWindow = (event, modalId) => {
-	console.log(modalId); 
-
 	// The id attribute value of the selected modal: 
 	// (Re)assigns the value of the 'selectedModalId' variable based on user selection.
 	let selectedModalId = event.currentTarget.id; 
 	let openModalId = modalId;   
-	console.log(openModalId);
 	
 	if (openModalId) {
 			selectedModalId = openModalId;
 	} 
-	console.log(selectedModalId);
 
 	// The type of modal selected:  
 	// Checks and (re)assigns the value of the 'type' variable based on user selection.
 	// Uses click and keyboard events to assign type for 'previous' and 'next' modal.  
 	let modalType = event.currentTarget.dataset.navigation; 
 	let arrowKey = event.key; 
-	console.log(arrowKey);
 		
 	let type = 'new';
 	if (modalType || arrowKey) {
@@ -394,7 +385,6 @@ const prepareModalWindow = (event, modalId) => {
 			type = 'next';
 		}
 	}
-	console.log(type);
 
 	// Requests data for selected modal:
 	let selectedModalData = getModalData(type, selectedModalId);

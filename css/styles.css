@@ -218,8 +218,8 @@ Built with: JavaScript, ES6 modules, HTML5, CSS3, and Flexbox.
   }
 
   .modal-image {
-    margin: 10px;
     width: 100%;
+    margin: 10px;
   }
 
   .modal-image img {
